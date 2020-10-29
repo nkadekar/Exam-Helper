@@ -18,7 +18,9 @@
 
 ## Project Description
  > Your project description should summarize the project you are proposing. Be sure to include
- > * Why is it important or interesting to you?
+ > * Why is it important or interesting to you? <br>
+ > This project is important and interesting to us because it serves a practical purpose in our daily lives. As students, staying organized and ensuring that all deadlines are met is half of the task. This project combines the test tracking aspect of school with the actual preparation for the test itself. This project produces a product that would significantly reduce time spent organizing study materials during test weeks, therefore increasing the time students can spend studying. Finally, this product has a flexible interface that can be used by both high school and college students.
+
  > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
  >   * [toolname](link) - Short description
  > * What will be the input/output of your project?
