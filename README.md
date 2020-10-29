@@ -1,5 +1,4 @@
-# \<Exam Helper\>
- > Your author list below should include links to all members GitHub and should begin with a "\<" (remove existing author).
+# Exam Helper
  
  > Authors: \<[Arlene Phimmasone](https://github.com/arlenekimp)\> \<[Trinah Maulion](https://github.com/trinahcm )\> \<[Nikhil Kadekar](https://github.com/nkadekar)\>
  
@@ -14,7 +13,6 @@
  > * Each member of the group **must** be committing code regularly and make sure their code is correctly attributed to them. We will be checking attributions to determine if there was equal contribution to the project.
 
 ## Project Description
- > Your project description should summarize the project you are proposing. Be sure to include
  > * Why is it important or interesting to you? <br>
  >   * This project is important and interesting to us because it serves a practical purpose in our daily lives. As students, staying organized and ensuring that all deadlines are met is half of the task. This project combines the test tracking aspect of school with the actual preparation for the test itself. This project produces a product that would significantly reduce time spent organizing study materials during test weeks, therefore increasing the time students can spend studying. Finally, this product has a flexible interface that can be used by both high school and college students.
 
@@ -26,6 +24,8 @@
  > * What are the three design patterns you will be using. For each design pattern you must:
  >   * The three design patterns that we will be using are Abstract Factory, Visitor, and Facade.
  >   * We chose Abstract Factory as our creational design pattern because it fits our vision for how we wanted to create classes and objects within our project. We have a system that is quite independent of the creation of the objects themselves. We have a large amount of features that we will implement this design pattern with including the Test (Multiple Choice, Fill in the Blank, Match) classes, the flashcard class, and the classes for the different exams. These features are all designed to be working together and pulling data from each other so Abstract Factory is a good fit.
+ >   * We chose Facade for our structural design pattern because it provides the option of system control at the high level. Since we are planning to implement several subclasses, Facade allows us to reduce complexity in our project’s structure. We want our interface to be quite simple while still accessing the several lays of subclasses. The Facade would know which subsystem to access for each particular task and do so based on the user commands. These user commands may include studying for a test, creating new exam dates, or importing file data into a flashcard list.
+
 
 
  > ## Phase II
