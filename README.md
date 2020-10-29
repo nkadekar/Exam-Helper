@@ -22,8 +22,9 @@
  > This project is important and interesting to us because it serves a practical purpose in our daily lives. As students, staying organized and ensuring that all deadlines are met is half of the task. This project combines the test tracking aspect of school with the actual preparation for the test itself. This project produces a product that would significantly reduce time spent organizing study materials during test weeks, therefore increasing the time students can spend studying. Finally, this product has a flexible interface that can be used by both high school and college students.
 
  > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
- >   * [toolname](link) - Short description
- > * What will be the input/output of your project?
+ >   * We will be using C++ as the primary high level language in this project. We will also have a console based interface in which the user can interact with the system using a series of keyboard commands displayed on the screen. 
+> * What will be the input/output of your project? <br>
+> The input for our project will be the user’s classes or subjects (english, math, spanish, etc.) that they are taking. In addition, the user can input files containing keywords and definitions that they need to study for. They can then provide test and assignment deadlines for each of their classes so they are aware of their deadlines and know how much time they have left to study for these exams. 
  > * What are the three design patterns you will be using. For each design pattern you must:
  >   * Explain in 3 - 5 sentences why you picked this pattern and what feature you will implement with it
  > * This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
