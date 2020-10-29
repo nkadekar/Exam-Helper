@@ -1,6 +1,3 @@
- > As you complete each section you **must** remove the prompt text. Every *turnin* of this project includes points for formatting of this README so keep it clean and keep it up to date. 
- > Prompt text is any lines beginning with "\<"
- > Replace anything between \<...\> with your project specifics and remove angle brackets. For example, you need to name your project and replace the header right below this line with that title (no angle brackets). 
 # \<Exam Helper\>
  > Your author list below should include links to all members GitHub and should begin with a "\<" (remove existing author).
  
@@ -19,15 +16,17 @@
 ## Project Description
  > Your project description should summarize the project you are proposing. Be sure to include
  > * Why is it important or interesting to you? <br>
- > This project is important and interesting to us because it serves a practical purpose in our daily lives. As students, staying organized and ensuring that all deadlines are met is half of the task. This project combines the test tracking aspect of school with the actual preparation for the test itself. This project produces a product that would significantly reduce time spent organizing study materials during test weeks, therefore increasing the time students can spend studying. Finally, this product has a flexible interface that can be used by both high school and college students.
+ >   * This project is important and interesting to us because it serves a practical purpose in our daily lives. As students, staying organized and ensuring that all deadlines are met is half of the task. This project combines the test tracking aspect of school with the actual preparation for the test itself. This project produces a product that would significantly reduce time spent organizing study materials during test weeks, therefore increasing the time students can spend studying. Finally, this product has a flexible interface that can be used by both high school and college students.
 
  > * What languages/tools/technologies do you plan to use? (This list may change over the course of the project)
  >   * We will be using C++ as the primary high level language in this project. We will also have a console based interface in which the user can interact with the system using a series of keyboard commands displayed on the screen. 
 > * What will be the input/output of your project? <br>
-> The input for our project will be the user’s classes or subjects (english, math, spanish, etc.) that they are taking. In addition, the user can input files containing keywords and definitions that they need to study for. They can then provide test and assignment deadlines for each of their classes so they are aware of their deadlines and know how much time they have left to study for these exams. 
+ >   * The input for our project will be the user’s classes or subjects (english, math, spanish, etc.) that they are taking. In addition, the user can input files containing keywords and definitions that they need to study for. They can then provide test and assignment deadlines for each of their classes so they are aware of their deadlines and know how much time they have left to study for these exams. 
+ >   * Our project’s output will consist of many different components. One output feature is a sorted list of exam dates that will help students be aware of what exams are coming up. Another output feature includes the list of terms and definitions that will be on their exam. The user can have the option to test themself and practice these terms. Our program will give them the option of how they would like to take their test (multiple choice or fill in the blank) and it will output accordingly. Additionally, if the user misses some terms and definitions, our program can output those words onto a different file as a study guide. This will help students familiarize themselves with the ones they missed to better prepare for the exam. 
  > * What are the three design patterns you will be using. For each design pattern you must:
- >   * Explain in 3 - 5 sentences why you picked this pattern and what feature you will implement with it
- > * This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
+ >   * The three design patterns that we will be using are Abstract Factory, Visitor, and Facade.
+ >   * We chose Abstract Factory as our creational design pattern because it fits our vision for how we wanted to create classes and objects within our project. We have a system that is quite independent of the creation of the objects themselves. We have a large amount of features that we will implement this design pattern with including the Test (Multiple Choice, Fill in the Blank, Match) classes, the flashcard class, and the classes for the different exams. These features are all designed to be working together and pulling data from each other so Abstract Factory is a good fit.
+
 
  > ## Phase II
  > In addition to completing the "Class Diagram" section below, you will need to 
