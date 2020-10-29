@@ -4,7 +4,7 @@
  
 ## Project Description
 
- > ## Phase II
+ > ## Phase I
  > * Why is it important or interesting to you? <br>
  >   * This project is important and interesting to us because it serves a practical purpose in our daily lives. As students, staying organized and ensuring that all deadlines are met is half of the task. This project combines the test tracking aspect of school with the actual preparation for the test itself. This project produces a product that would significantly reduce time spent organizing study materials during test weeks, therefore increasing the time students can spend studying. Finally, this product has a flexible interface that can be used by both high school and college students.
 
