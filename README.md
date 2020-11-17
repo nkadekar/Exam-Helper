@@ -16,23 +16,18 @@
  >   * Our project’s output will consist of many different components. One output feature is a sorted list of exam dates that will help students be aware of what exams are coming up. Another output feature includes the list of terms and definitions that will be on their exam. The user can have the option to test themself and practice these terms. Our program will give them the option of how they would like to take their test (multiple choice or fill in the blank) and it will output accordingly. Additionally, if the user misses some terms and definitions, our program can output those words onto a different file as a study guide. This will help students familiarize themselves with the ones they missed to better prepare for the exam.
  
  > * What are the three design patterns you will be using. For each design pattern you must:
- >   * The three design patterns that we will be using are strategy, Facade, and Composite.
+ >   * The three design patterns that we will be using are Strategy, Facade, and Composite.
  >   * We chose the Strategy behavioral pattern in order to implement the quizzes of our project. For each exam, we plan on having two different types of quizzes that the user can choose to take, one being a multiple choice quiz and the other being a fill in the word quiz. The strategy pattern was perfect for this feature because each quiz requires a different algorithm and the strategy pattern allows us to encapsulate the algorithms and allow for flexibility in case we want to add a third or fourth type of quiz. This strategy would probably be instantiated inside of an exam so that the exam interface can choose which version of the quiz subclasses it wants to create based on user input.
  >   * We chose Facade for our structural design pattern because it provides the option of system control at the high level. Since we are planning to implement several subclasses, Facade allows us to reduce complexity in our project’s structure. We want our interface to be quite simple while still accessing the several lays of subclasses. The Facade would know which subsystem to access for each particular task and do so based on the user commands. These user commands may include studying for a test, creating new exam dates, or importing file data into a flashcard list.
- >   *  We chose the composite structural pattern because it provided an ideal way to organize the schedule feature of our project. We want to have an exam class that holds the flashcards and information about the exam itself. We also want to have a course class that can hold multiple exams within it to represent multiple midterms or a combination of a midterm and final all within one course. The composite pattern allows us to use that composite-primitive relationship that we plan on implementing. It also lets us have a vector of both the course and exam classes which would be really nice for storing the entire schedule of a specific individual.
+ >   *  We chose the Composite structural pattern because it provided an ideal way to organize the schedule feature of our project. We want to have an exam class that holds the flashcards and information about the exam itself. We also want to have a course class that can hold multiple exams within it to represent multiple midterms or a combination of a midterm and final all within one course. The composite pattern allows us to use that composite-primitive relationship that we plan on implementing. It also lets us have a vector of both the course and exam classes which would be really nice for storing the entire schedule of a specific individual.
 
 
 
  > ## Phase II
- > In addition to completing the "Class Diagram" section below, you will need to 
- > * Set up your GitHub project board as a Kanban board for the project. It should have columns that map roughly to 
- >   * Backlog, TODO, In progress, In testing, Done
- >   * You can change these or add more if you'd like, but we should be able to identify at least these.
- > * There is no requirement for automation in the project board but feel free to explore those options.
- > * Create an "Epic" (note) for each feature and each design pattern and assign them to the appropriate team member. Place these in the `Backlog` column
- > * Complete your first *sprint planning* meeting to plan out the next 7 days of work.
- >   * Create smaller development tasks as issues and assign them to team members. Place these in the `Backlog` column.
- >   * These cards should represent roughly 7 days worth of development time for your team, taking you until your first meeting with the TA
+ > First *sprint planning* meeting (Next 7 days of work).
+ >   * Nikhil: I will be implementing the Flashcard class and the Flashcard List class which is the foundation for the rest of the methods and classes that we will be implementing. I will also be starting to implement the MultipleChoiceQuiz class which is one of the two concrete strategies in our design. 
+ >   * 
+ >   * 
 ## Class Diagram
  > Include a class diagram(s) for each design pattern and a description of the diagram(s). This should be in sufficient detail that another group could pick up the project this point and successfully complete it. Use proper OMT notation (as discussed in the course slides). You may combine multiple design patterns into one diagram if you'd like, but it needs to be clear which portion of the diagram represents which design pattern (either in the diagram or in the description). 
  
