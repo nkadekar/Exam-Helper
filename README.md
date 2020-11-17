@@ -29,7 +29,9 @@
  >   * 
  >   * 
 ## Class Diagram
- <img src="cs100 project omt.png">
+ <p align="center">
+    <img src="cs100 project omt.png">
+ </p>
  
  > ## Phase III
  > You will need to schedule a check-in with the TA (during lab hours or office hours). Your entire team must be present. 
