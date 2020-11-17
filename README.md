@@ -24,14 +24,16 @@
 
 
  > ## Phase II
- > First *sprint planning* meeting (Next 7 days of work).
+ > * First *sprint planning* meeting (Next 7 days of work).
  >   * Nikhil: I will be implementing the Flashcard class and the Flashcard List class which is the foundation for the rest of the methods and classes that we will be implementing. I will also be starting to implement the MultipleChoiceQuiz class which is one of the two concrete strategies in our design. 
- >   * 
+ >   * Trinah: For the first sprint meeting, I plan to implement the three dashboard features utilizing the facade design pattern. When the user first opens Exam Helper, they will be prompted to a dashboard with all their classes and they can choose which class they want to study for. After choosing the class, they will be prompted to another dashboard with a list of exams in that class and they can choose which exam they want to study for. Finally, the user will be prompted to the last dashboard that gives them options on how they would like to practice for the exam (multiple choice or fill in the blank).
  >   * 
 ## Class Diagram
  <p align="center">
     <img src="cs100 project omt.png">
  </p>
+> * We utilized the facade structural design pattern in our project as it would fit well with the dashboard aspect we had in mind. After the user logs in, they will be prompted through three different dashboards with options so that our program knows how to handle their request. The dashboard will provide options for if they want to access their flashcards, access practice tests and study guide materials, and if they want to check which exams are coming up. They can also add, delete, and edit their courses, flashcard sets, and exam dates from the given options on each dashboard. After the user inputs their request, the menu will access the class and function associated with it and carry out their request. When it is completed, they will be prompted back to the dashboard in case they have more requests to be carried out. This menu facade provides a simple interface for a complex subsystem. Depending on the user’s request, the easy-to-use menu is able to delegate the user’s request to the appropriate subsystem object.
+ 
  
  > ## Phase III
  > You will need to schedule a check-in with the TA (during lab hours or office hours). Your entire team must be present. 
