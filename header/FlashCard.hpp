@@ -19,7 +19,7 @@ class FlashCard {
 		}
 
 		string getTerm(){
-			return "";
+			return term;
 		}
 
 		string getDefinition(){
