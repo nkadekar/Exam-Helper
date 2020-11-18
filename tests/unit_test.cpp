@@ -40,6 +40,26 @@ TEST(FlashCardTest, EmptyStrings){
 	EXPECT_EQ(test->getUsed(), false);
 }
 
+TEST(FlashCardTest, ChangeTerm){
+	FlashCard* test = new FlashCard("", "");
+	
+	EXPECT_EQ(test->getTerm(), "");
+
+	test->changeTerm("Test");
+
+	EXPECT_EQ(test->getTerm(), "Test");
+}
+
+TEST(FlashCardTest, ChangeDefintion){
+	FlashCard* test = new FlashCard("", "");
+
+	EXPECT_EQ(test->getDefinition(), "");
+
+	test->changeDefinition("This is a test");
+
+	EXPECT_EQ(test->getDefinition(), "This is a test");
+}
+
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();

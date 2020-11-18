@@ -37,6 +37,14 @@ class FlashCard {
 		void setUsedToFalse(){
 			this->used = false;
 		}
+		
+		void changeTerm(string term){
+            this->term = term;
+        }
+
+        void changeDefinition(string definition){
+            this->definition = definition;
+        }
 };
 
 #endif
