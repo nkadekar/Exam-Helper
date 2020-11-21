@@ -66,7 +66,7 @@ TEST(FlashCardTest, ChangeDefintion){
 TEST(FlashCardListTest, SizeTest_AddTest){
 	FlashCardList* test = new FlashCardList();
 
-	ASSERT(test->size(), 0);
+	ASSERT_EQ(test->size(), 0);
 
 	test->addFlashCard("Term1", "Definition1");
 	test->addFlashCard("Term2", "Definition2");
@@ -86,7 +86,7 @@ TEST(FlashCardListTest, AddTest_AtTest){
 	test->addFlashCard("Term1", "Definition1");
 	test->addFlashCard("Term2", "Definition2");
 
-	ASSERT(test->size(), 2);
+	ASSERT_EQ(test->size(), 2);
 	EXPECT_EQ(test->at(0)->getTerm(), "Term1");
 	EXPECT_EQ(test->at(1)->getTerm(), "Term2");
 	EXPECT_EQ(test->at(0)->getDefinition(), "Definition1");
@@ -98,11 +98,11 @@ TEST(FlashCardListTest, RemoveFlashCardTest){
 	test->addFlashCard("Term1", "Definition1");
 	test->addFlashCard("Term2", "Definition2");
 
-	ASSERT(test->size(), 2);
+	ASSERT_EQ(test->size(), 2);
 
 	test->removeFlashCard(1);
 
-	ASSERT(test->size(), 1);
+	ASSERT_EQ(test->size(), 1);
 	EXPECT_EQ(test->at(0)->getTerm(), "Term1");
 	EXPECT_EQ(test->at(0)->getDefinition(), "Definition1");
 }
@@ -112,7 +112,7 @@ TEST(FlashCardListTest, displayFlashCardsTest){
 	test->addFlashCard("Term1", "Definition1");
 	test->addFlashCard("Term2", "Definition2");
 
-	ASSERT(test->size(), 2);
+	ASSERT_EQ(test->size(), 2);
 
 	EXPECT_EQ(test->displayFlashCards(), "FLASHCARDS\n1. Term1 : Definition1\n2. Term2 : Definition2\n");
 }
@@ -127,11 +127,11 @@ TEST(FlashCardListTest, changeFlashCardTest){
 	FlashCardList* test = new FlashCardList();
 	test->addFlashCard("Term1", "Definition1");
 
-	ASSERT(test->size(), 1);
+	ASSERT_EQ(test->size(), 1);
 
 	test->changeFlashCard("NewTerm1", "NewDefinition1", 0);
 
-	ASSERT(test->size(), 1);
+	ASSERT_EQ(test->size(), 1);
 	EXPECT_EQ(test->at(0)->getTerm(), "NewTerm1");
 	EXPECT_EQ(test->at(0)->getDefinition(), "NewDefinition1");
 }
