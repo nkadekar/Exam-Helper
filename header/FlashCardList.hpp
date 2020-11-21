@@ -12,17 +12,19 @@ class FlashCardList {
 		vector<FlashCard*> set;
 	
 	public:
+		FlashCardList(){};
+
 		int size(){
 			return set.size();
 		}
 
-		FlashCard* at(int i){
-			return set.at(i);
+		FlashCard* at(int index){
+			return set.at(index);
 		}
 
-		void removeFlashCard(int i){
-			delete set.at(i);
-			set.erase(set.begin() + i);
+		void removeFlashCard(int index){
+			delete set.at(index);
+			set.erase(set.begin() + index);
 		}
 
 		void addFlashCard(string term, string definition){
@@ -31,12 +33,20 @@ class FlashCardList {
 
 		string displayFlashCards(){
 			stringstream inSS;
-			inSS << "Flashcards" << endl;
+			inSS << "FLASHCARDS" << endl;
+			if (set.size()){
+				inSS << "List is empty." << endl;
+			}
+
 			for (int i = 0; i < set.size(); i++){
 				inSS << i + 1 << ". " << set.at(i)->getTerm() << " : " << set.at(i)->getDefinition() << endl;
-				inSS << endl;
 			}
 			return inSS.str();
+		}
+
+		void changeFlashCard(string term, string definition, int index){
+			set.at(index)->changeTerm(term);
+			set.at(index)->changeTerm(definition);
 		}
 };
 
