@@ -18,10 +18,6 @@ class Quiz {
         
         virtual void runQuiz() = 0;
 
-        //For testing of constructor
-        FlashCardList* getSet(){
-            return set;
-        }
 };
 
 #endif

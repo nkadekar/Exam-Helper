@@ -137,16 +137,6 @@ TEST(FlashCardListTest, changeFlashCardTest){
 	EXPECT_EQ(test->at(0)->getDefinition(), "NewDefinition1");
 }
 
-TEST(QuizTest, ConstructorTest){
-	FlashCardList* set = new FlashCardList();
-
-	ASSERT_EQ(set->size(), 0);
-
-	Quiz* test = new Quiz(set);
-
-	EXPECT_EQ(test->getSet()->size(), 0);
-}
-
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
