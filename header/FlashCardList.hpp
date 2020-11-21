@@ -46,7 +46,7 @@ class FlashCardList {
 
 		void changeFlashCard(string term, string definition, int index){
 			set.at(index)->changeTerm(term);
-			set.at(index)->changeTerm(definition);
+			set.at(index)->changeDefinition(definition);
 		}
 };
 
