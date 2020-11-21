@@ -2,6 +2,7 @@
 
 #include "../header/FlashCard.hpp"
 #include "../header/FlashCardList.hpp"
+#include "../header/Quiz.hpp"
 
 //FlashCard Tests
 TEST(FlashCardTest, ConstructorTest){
@@ -134,6 +135,16 @@ TEST(FlashCardListTest, changeFlashCardTest){
 	ASSERT_EQ(test->size(), 1);
 	EXPECT_EQ(test->at(0)->getTerm(), "NewTerm1");
 	EXPECT_EQ(test->at(0)->getDefinition(), "NewDefinition1");
+}
+
+TEST(QuizTest, ConstructorTest){
+	FlashCardList* set = new FlashCardList();
+
+	ASSERT_EQ(set->size(), 0);
+
+	Quiz* test = new Quiz(set);
+
+	EXPECT_EQ(test->getSet()->size(), 0);
 }
 
 int main(int argc, char **argv) {
