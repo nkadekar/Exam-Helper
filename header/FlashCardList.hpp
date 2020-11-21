@@ -34,7 +34,7 @@ class FlashCardList {
 		string displayFlashCards(){
 			stringstream inSS;
 			inSS << "FLASHCARDS" << endl;
-			if (set.size()){
+			if (set.empty()){
 				inSS << "List is empty." << endl;
 			}
 
