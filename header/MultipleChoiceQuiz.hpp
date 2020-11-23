@@ -2,9 +2,27 @@
 #define MULTIPLECHOICEQUIZ_HPP
 
 #include "Quiz.hpp"
+#include <iostream>
 
 class MultipleChoiceQuiz: public Quiz {
+    public: 
+        MultipleChoiceQuiz(FlashCardList* set) : Quiz(set){};
 
+        virtual void runQuiz() {
+            char input;
+            cin >> input;
+            while (input != 'q' || input != 'Q'){
+                //change here
+            }
+
+        }
+
+    private:
+        void validateInput(char input){
+            while (input != 'q' || input != 'Q' || input != 'a' || input != 'A' || input != 'b' || input != 'B' || input != 'c' || input != 'C' || input != 'd' || input != 'D'){
+                
+            }
+        }
 };
 
 #endif
