@@ -2,6 +2,7 @@
 
 #include "../header/FlashCard.hpp"
 #include "../header/FlashCardList.hpp"
+#include "../header/Quiz.hpp"
 
 //FlashCard Tests
 TEST(FlashCardTest, ConstructorTest){
