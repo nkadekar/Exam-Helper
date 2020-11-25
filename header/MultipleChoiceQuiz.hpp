@@ -11,16 +11,16 @@ class MultipleChoiceQuiz: public Quiz {
         virtual void runQuiz() {
             char input;
             cin >> input;
+            validateInput(input);
             while (input != 'q' || input != 'Q'){
-                //change here
+                //Algorithm goes within the while loop
             }
-
         }
 
     private:
-        void validateInput(char input){
+        void validateInput(char& input){
             while (input != 'q' || input != 'Q' || input != 'a' || input != 'A' || input != 'b' || input != 'B' || input != 'c' || input != 'C' || input != 'd' || input != 'D'){
-                
+                cin >> input;
             }
         }
 };
