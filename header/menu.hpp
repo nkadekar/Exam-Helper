@@ -5,6 +5,11 @@
 using namespace std;
 
 class Menu {
+    private:
+//        string fileName;
+//        Schedule* curr;
+//        Quiz* currQuiz;
+
     public:
         void mainMenu() {
             char input = ' ';
@@ -24,14 +29,14 @@ class Menu {
                 cout << "Enter the name of your folder: ";
                 getline(cin, folderName);
                 cout << endl;
-                //        addFolder(folderName);
+//              addFolder(folderName);
             }
             else if (input == 'b') {
                 int numID;
                 cout << "Enter the ID number of the folder you want to remove: ";
                 cin >> numID;
                 cout << endl;
-                //        removeFolder(numID);
+//              removeFolder(numID);
             }
             else if (input == 'c') {
                 int numID;
@@ -44,7 +49,7 @@ class Menu {
                 cout << "Enter new folder name: ";
                 getline(cin, newName);
                 cout << endl;
-                //        renameFolder(numID, newName);
+//              renameFolder(numID, newName);
             }
             else if (input == 'd') {
                 string name;
@@ -57,13 +62,17 @@ class Menu {
                 cout << "Enter exam date: ";
                 getline(cin, date);
                 cout << endl;
-                //        addExam(name, date);
+//              addExam(name, date);
             }
             else if (input == 'e') {
-                // delete exam
+                int numID;
+                cout << "Enter the ID number of the exam you want to remove: ";
+                cin >> numID;
+                cout << endl;
+//              removeExam(numID);
             }
             else if (input == 'f') {
-                // display exam schedule
+//              display exam schedule
             }
             else if (input == 'g') {
                 exit(0);
@@ -101,18 +110,17 @@ class Menu {
                 }
 
                 if (quizInput == 1) {
-                    //        runQuiz();
+//                  runQuiz();
                 }
                 else if (quizInput == 2) {
-                    //        runQuiz();
+//                  runQuiz();
                 }
             }
             else if (input == 'b') {
-                //       displayFlashCards();
+//              displayFlashCards();
             }
-            else if (input == 'c')
-            {
-                //        importFlashcards();
+            else if (input == 'c') {
+//              importFlashcards();
             }
             else if (input == 'd') {
                 string term;
@@ -125,14 +133,14 @@ class Menu {
                 cout << "Enter definition: ";
                 getline(cin, definition);
                 cout << endl;
-                //        addFlashCard(term, definition)
+//              addFlashCard(term, definition)
             }
             else if (input == 'e') {
                 int index;
                 cout << "Enter index of flashcard to be removed: ";
                 cin >> index;
                 cout << endl;
-                //        removeFlashCard(index);
+//              removeFlashCard(index);
             }
             else if (input == 'f') {
                 int index;
@@ -150,7 +158,7 @@ class Menu {
                 cout << "Enter new definition: ";
                 getline(cin, newDefinition);
                 cout << endl;
-                //        changeFlashCard(newTerm, newDefinition, index);
+//              changeFlashCard(newTerm, newDefinition, index);
             }
             else if (input == 'g') {
                 exit(0);
@@ -161,7 +169,7 @@ class Menu {
             cout << "EXAM HELPER MENU" << endl
                  << "-----------------------------" << endl;
 
-            //    print();
+//          print list of folders
 
             cout << "-----------------------------" << endl
                  << "a - Add Folder" << endl
@@ -170,13 +178,12 @@ class Menu {
                  << "d - Add Exam" << endl
                  << "e - Delete Exam" << endl
                  << "f - Display Exam Schedule" << endl
-                 << "g - Exit Exam Helper" << endl
-                 << endl
+                 << "g - Exit Exam Helper" << endl << endl
                  << "Choose an option: ";
         }
 
         void printQuizMenu() {
-            // cout (midterm)
+//          print exam name
             cout << "-----------------------------" << endl
                  << "a - Practice Quizzes" << endl
                  << "b - Display Flashcards" << endl
@@ -185,8 +192,7 @@ class Menu {
                  << "e - Delete Flashcards" << endl
                  << "f - Edit Flashcards" << endl
                  << "g - Return to Exam List" << endl
-                 << "h - Exit Exam Helper" << endl
-                 << endl
+                 << "h - Exit Exam Helper" << endl << endl
                  << "Choose an option: ";
         }
 };
