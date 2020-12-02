@@ -2,6 +2,7 @@
 #define MULTIPLECHOICEQUIZ_HPP
 
 #include "Quiz.hpp"
+#include "FlashCardList.hpp"
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
@@ -18,7 +19,7 @@ class MultipleChoiceQuiz: public Quiz {
                 cout << "This Flashcard set is empty." << endl;
                 return false;
             }
-            if (this->set->size() > 4){
+            if (this->set->size() < 4){
                 cout << "Flashcard set must have at least 4 Flashcards to take a quiz." << endl;
                 return false;
             }
@@ -34,6 +35,7 @@ class MultipleChoiceQuiz: public Quiz {
                 cin >> input;
                 validateInput(input);
                 if (input == 'q' || input == 'Q'){
+                    resetFlashcards();
                     return true;
                 }
                 if (input == answerUpper || input == answerLower){
@@ -46,6 +48,7 @@ class MultipleChoiceQuiz: public Quiz {
                 cout << endl; //To make the program look nice on the console
             }
             cout << "You have completed this set" << endl;
+            resetFlashcards();
             return true;
         }
 
@@ -107,6 +110,14 @@ class MultipleChoiceQuiz: public Quiz {
                 }
             }
             return (65 + randomAnswerPosition);
+        }
+
+        void resetFlashcards(){
+            for (int i = 0; i < set->size(); i++){
+                if (set->at(i)->getUsed() == true){
+                    set->at(i)->setUsedToTrue();
+                }
+            }
         }
 };
 
