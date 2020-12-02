@@ -33,6 +33,9 @@ class MultipleChoiceQuiz: public Quiz {
                 cout << "Select an answer choice. Press Q to exit the quiz." << endl;
                 cin >> input;
                 validateInput(input);
+                if (input == 'q' || input == 'Q'){
+                    return true;
+                }
                 if (input == answerUpper || input == answerLower){
                     cout << "Correct!" << endl;
                 }
