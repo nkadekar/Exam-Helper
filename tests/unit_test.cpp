@@ -137,6 +137,42 @@ TEST(FlashCardListTest, changeFlashCardTest){
 	EXPECT_EQ(test->at(0)->getDefinition(), "NewDefinition1");
 }
 
+TEST(MultipleChoiceQuizTest, EmptySet){
+	FlashCardList* set = new FlashCardList();
+	Quiz* test = new MultipleChoiceQuiz(set);
+	
+	EXPECT_EQ(test->runQuiz(), false);
+}
+
+TEST(MultipleChoiceQuizTest, SizeOneSet){
+	FlashCardList* set = new FlashCardList();
+	set->addFlashCard("FCT1", "FCD1");
+
+	Quiz* test = new MultipleChoiceQuiz(set);
+	
+	EXPECT_EQ(test->runQuiz(), false);
+}
+
+TEST(MultipleChoiceQuizTest, SizeTwoSet){
+	FlashCardList* set = new FlashCardList();
+	set->addFlashCard("FCT1", "FCD1");
+	set->addFlashCard("FCT2", "FCD2");
+	Quiz* test = new MultipleChoiceQuiz(set);
+	
+	EXPECT_EQ(test->runQuiz(), false);
+}
+
+TEST(MultipleChoiceQuizTest, SizeThreeSet){
+	FlashCardList* set = new FlashCardList();
+	set->addFlashCard("FCT1", "FCD1");
+	set->addFlashCard("FCT2", "FCD2");
+	set->addFlashCard("FCT3", "FCD3");
+
+	Quiz* test = new MultipleChoiceQuiz(set);
+	
+	EXPECT_EQ(test->runQuiz(), false);
+}
+
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
