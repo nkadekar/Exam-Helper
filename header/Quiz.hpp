@@ -16,7 +16,7 @@ class Quiz {
             this->set = set;
         }
         
-        virtual void runQuiz() = 0;
+        virtual bool runQuiz() = 0;
 
 };
 
