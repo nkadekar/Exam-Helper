@@ -67,7 +67,7 @@ class MultipleChoiceQuiz: public Quiz {
 
         //checks to see if the key passed in can be found in the vector passed in
         template <class T>
-        inline bool findInVec(vector<T>& v, T key){
+        bool findInVec(vector<T>& v, T key){
             for (int i = 0; i < v.size(); i++){
                 if (v.at(i) == key){
                     return true;
