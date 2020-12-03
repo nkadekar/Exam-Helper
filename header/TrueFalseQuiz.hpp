@@ -1,5 +1,5 @@
-#ifndef MULTIPLECHOICEQUIZ_HPP
-#define MULTIPLECHOICEQUIZ_HPP
+#ifndef TRUEFALSEQUIZ_HPP
+#define TRUEFALSEQUIZ_HPP
 
 #include "Quiz.hpp"
 #include "FlashCardList.hpp"
@@ -11,9 +11,9 @@
 
 using namespace std;
 
-class MultipleChoiceQuiz: public Quiz {
+class TrueFalseQuiz: public Quiz {
     public: 
-        MultipleChoiceQuiz(FlashCardList* set) : Quiz(set){};
+        TrueFalseQuiz(FlashCardList* set) : Quiz(set){};
 
         virtual bool runQuiz() {
             //checking edge cases
@@ -21,8 +21,8 @@ class MultipleChoiceQuiz: public Quiz {
                 cout << "This Flashcard set is empty." << endl;
                 return false;
             }
-            if (this->set->size() < 4){
-                cout << "Flashcard set must have at least 4 Flashcards to take a quiz." << endl;
+            if (this->set->size() < 2){
+                cout << "Flashcard set must have at least 2 Flashcards to take a quiz." << endl;
                 return false;
             }
             bool run = true;
@@ -33,7 +33,7 @@ class MultipleChoiceQuiz: public Quiz {
                 char answerUpper = generateNewQuestion(); //generates new question and stores the answer of the question
                 char answerLower = answerUpper + 32;
                 char input;
-                cout << "Select an answer choice. Press Q to exit the quiz." << endl;
+                cout << "Type 'T' for True or 'F' for False. Press Q to exit the quiz." << endl;
                 cin >> input;
                 validateInput(input);
                 if (input == 'q' || input == 'Q'){
@@ -54,18 +54,15 @@ class MultipleChoiceQuiz: public Quiz {
             return true;
         }
 
-    //Helpers
-    private:
         void validateInput(char& input){
             char temp = input;
-            while (input != 'q' && input != 'Q' && input != 'a' && input != 'A' && input != 'b' && input != 'B' && input != 'c' && input != 'C' && input != 'd' && input != 'D'){
+            while (input != 'q' && input != 'Q' && input != 't' && input != 'T' && input != 'f' && input != 'F'){
                 cout << "Your input is invalid. Try again" << endl;
                 cin >> input;
             }
             return;
         }
 
-        //checks to see if the key passed in can be found in the vector passed in
         template <class T>
         inline bool findInVec(vector<T>& v, T key){
             for (int i = 0; i < v.size(); i++){
@@ -94,24 +91,25 @@ class MultipleChoiceQuiz: public Quiz {
             }
             set->at(randTermIndex)->setUsedToTrue(); //changes object element "used"
             usedIndex.push_back(randTermIndex); //pushes term into usedIndex vector
-            cout << set->at(randTermIndex)->getTerm() << endl;
-            int randomAnswerPosition = rand() % 4; //0-A, 1-B, 2-C, 3-D  This is for position for correct answer
-            for (int i = 0; i < 4; i++){
-                char letter = 65 + i; //used for display the answer choice for the specific definition
-                if (i == randomAnswerPosition){ //displays correct answer
-                    cout << letter << ": " << set->at(randTermIndex)->getDefinition() << endl;
-                }
-                //displays incorrect answers
-                else {
-                    int randomIndex = rand() % set->size(); //picks random definition to display as dummy answer choice
+            cout << set->at(randTermIndex)->getTerm();
+            int randomAnswerPosition = rand() % 2; //0-F, 1-T, This is for position for correct answer
+            if (randomAnswerPosition == 1){
+                cout << " is " << set->at(randTermIndex)->getDefinition() << endl;
+            }
+            else {
+                int randomIndex = rand() % set->size(); //picks random definition to display as dummy answer choice
                     while(findInVec(usedIndex, randomIndex)){ //checks to make sure index not already used
                         randomIndex = rand() % set->size();
                     }
                     usedIndex.push_back(randomIndex); //pushes index into usedIndex vector
-                    cout << letter << ": " << set->at(randomIndex)->getDefinition() << endl;
+                    cout << " is " << set->at(randomIndex)->getDefinition() << endl;
                 }
+            if (randomAnswerPosition == 1){
+                return 84;
             }
-            return (65 + randomAnswerPosition);
+            else {
+                return 70;
+            }
         }
 
         void resetFlashcards(){
