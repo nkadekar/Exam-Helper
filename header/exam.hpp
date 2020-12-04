@@ -37,15 +37,17 @@ class Exam : public Schedule {
         }
 
         void addFlashCards(int index) {
-            set->addFlashCard(int index);
+            set->addFlashCard(index);
         }
 
-        void removeFlashCards(string term, string definition) {
-            set->removeFlashCard(string term, string definition);
+        void removeFlashCards(int index) {
+            string term = set.at(index)->getTerm();
+            string defintion = set.at(index)->getDefinition();
+            set->removeFlashCard(term, definition, index);
         }
 
         void editFlashcards(string term, string defintion, int index) {
-            set->changeFlashCard(string term, string defintion, int index);
+            set->changeFlashCard(term, defintion, index);
         }
 
         void startQuiz(Flashcard* set) {
