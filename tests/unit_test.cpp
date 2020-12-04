@@ -174,6 +174,23 @@ TEST(MultipleChoiceQuizTest, SizeThreeSet){
 	EXPECT_EQ(test->runQuiz(), false);
 }
 
+TEST(TrueFalseQuizTest, EmptySet){
+	FlashCardList* set = new FlashCardList();
+
+	Quiz* test = new TrueFalseQuiz(set);
+	
+	EXPECT_EQ(test->runQuiz(), false);
+}
+
+TEST(TrueFalseQuizTest, SizeThreeSet){
+	FlashCardList* set = new FlashCardList();
+	set->addFlashCard("FCT1", "FCD1");
+
+	Quiz* test = new TrueFalseQuiz(set);
+	
+	EXPECT_EQ(test->runQuiz(), false);
+}
+
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
