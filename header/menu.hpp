@@ -2,13 +2,17 @@
 #define MENU_HPP
 
 #include <iostream>
+#include "header/schedule.hpp"
+#include "header/exam.hpp"
+#include "header/folder.hpp"
+
 using namespace std;
 
 class Menu {
     private:
-//        string fileName;
-//        Schedule* curr;
-//        Quiz* currQuiz;
+        string fileName;
+        Schedule* curr;
+        Quiz* currQuiz;
 
     public:
         void mainMenu() {
@@ -29,14 +33,14 @@ class Menu {
                 cout << "Enter the name of your folder: ";
                 getline(cin, folderName);
                 cout << endl;
-//              addFolder(folderName);
+                addFolder(folderName);
             }
             else if (input == 'b') {
                 int numID;
                 cout << "Enter the ID number of the folder you want to remove: ";
                 cin >> numID;
                 cout << endl;
-//              removeFolder(numID);
+                removeFolder(numID);
             }
             else if (input == 'c') {
                 int numID;
@@ -49,7 +53,7 @@ class Menu {
                 cout << "Enter new folder name: ";
                 getline(cin, newName);
                 cout << endl;
-//              renameFolder(numID, newName);
+                renameFolder(numID, newName);
             }
             else if (input == 'd') {
                 string name;
@@ -62,17 +66,57 @@ class Menu {
                 cout << "Enter exam date: ";
                 getline(cin, date);
                 cout << endl;
-//              addExam(name, date);
+                addExam(name, date);
             }
             else if (input == 'e') {
                 int numID;
                 cout << "Enter the ID number of the exam you want to remove: ";
                 cin >> numID;
                 cout << endl;
-//              removeExam(numID);
+                removeExam(numID);
             }
             else if (input == 'f') {
-//              display exam schedule
+                string newName = "";
+                string newDate = "";
+                int numID;
+                char choice = ' ';
+
+                cout << "Enter the ID number of the exam you want to remove: ";
+                cin >> numID;
+                cout << endl;
+
+                cout << "What would you like to change?" << endl
+                     << "a - Rename Exam" << endl
+                     << "b - Change Exam Date" << endl
+                     << "c - Both" << endl;
+                cin >> choice;
+                cout << endl;
+                
+                while (choice != 'a' || choice != 'b' || choice != 'c') {
+                    cout << "Invalid Input. Choose a valid option: ";
+                    cin >> input;
+                    cout << endl;
+                }
+                
+                if (choice == 'a') {
+                    cout << "Enter new Exam name: ";
+                    getline(cin, newName);
+                    cout << endl;
+                }
+                else if (choice == 'b') {
+                    cout << "Enter new Exam date: ";
+                    getline(cin, newDate);
+                    cout << endl;
+                }
+                else if (choice == 'c') {
+                    cout << "Enter new Exam name: ";
+                    getline(cin, newName);
+                    cout << endl;
+                    cout << "Enter new Exam date: ";
+                    getline(cin, newDate);
+                    cout << endl;
+                }
+                editExam(newName, newDate, numID);
             }
             else if (input == 'g') {
                 exit(0);
@@ -86,7 +130,7 @@ class Menu {
             cout << endl;
 
             while (input != 'a' || input != 'b' || input != 'c' || input != 'd' ||
-                   input != 'e' || input != 'f' || input != 'g') {
+                   input != 'e' || input != 'f') {
                 cout << "Invalid Input. Choose an option: ";
                 cin >> input;
                 cout << endl;
@@ -105,24 +149,22 @@ class Menu {
                 while (quizInput != 1 || quizInput != 2) {
                     cout << "Invalid Input. Choose an option: ";
                     cin >> quizInput;
-                    cout << endl
-                         << endl;
+                    cout << endl << endl;
                 }
 
                 if (quizInput == 1) {
-//                  runQuiz();
+                    setQuizMultipleChoice();
+                    startQuiz(FlashcardList* set);
                 }
                 else if (quizInput == 2) {
-//                  runQuiz();
+                    setQuizFillIn();
+                    startQuiz(FlashcardList* set);
                 }
             }
             else if (input == 'b') {
-//              displayFlashCards();
+                displayFlashCards();
             }
             else if (input == 'c') {
-//              importFlashcards();
-            }
-            else if (input == 'd') {
                 string term;
                 string definition;
 
@@ -133,16 +175,18 @@ class Menu {
                 cout << "Enter definition: ";
                 getline(cin, definition);
                 cout << endl;
-//              addFlashCard(term, definition)
+                addFlashCards(term, definition)
             }
-            else if (input == 'e') {
+            else if (input == 'd') {
                 int index;
+
                 cout << "Enter index of flashcard to be removed: ";
                 cin >> index;
                 cout << endl;
-//              removeFlashCard(index);
+
+                removeFlashCards(index);
             }
-            else if (input == 'f') {
+            else if (input == 'e') {
                 int index;
                 string newTerm;
                 string newDefinition;
@@ -158,9 +202,9 @@ class Menu {
                 cout << "Enter new definition: ";
                 getline(cin, newDefinition);
                 cout << endl;
-//              changeFlashCard(newTerm, newDefinition, index);
+                editFlashCards(newTerm, newDefinition, index);
             }
-            else if (input == 'g') {
+            else if (input == 'f') {
                 exit(0);
             }
         }
@@ -168,16 +212,14 @@ class Menu {
         void printMainMenu() {
             cout << "EXAM HELPER MENU" << endl
                  << "-----------------------------" << endl;
-
-//          print list of folders
-
+            print();
             cout << "-----------------------------" << endl
                  << "a - Add Folder" << endl
                  << "b - Delete Folder" << endl
                  << "c - Rename Folder" << endl
                  << "d - Add Exam" << endl
                  << "e - Delete Exam" << endl
-                 << "f - Display Exam Schedule" << endl
+                 << "f - Edit Exam" << endl
                  << "g - Exit Exam Helper" << endl << endl
                  << "Choose an option: ";
         }
@@ -187,12 +229,10 @@ class Menu {
             cout << "-----------------------------" << endl
                  << "a - Practice Quizzes" << endl
                  << "b - Display Flashcards" << endl
-                 << "c - Import Flashcards" << endl
-                 << "d - Add Flashcards" << endl
-                 << "e - Delete Flashcards" << endl
-                 << "f - Edit Flashcards" << endl
-                 << "g - Return to Exam List" << endl
-                 << "h - Exit Exam Helper" << endl << endl
+                 << "c - Add Flashcards" << endl
+                 << "d - Delete Flashcards" << endl
+                 << "e - Edit Flashcards" << endl
+                 << "f - Exit Exam Helper" << endl << endl
                  << "Choose an option: ";
         }
 };
