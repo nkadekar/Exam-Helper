@@ -36,12 +36,16 @@ class Exam : public Schedule {
             set->displayFlashCards();
         }
 
-        void addFlashCards() {
-            set->addFlashCard();
+        void addFlashCards(int index) {
+            set->addFlashCard(int index);
         }
 
-        void importFlashCards() {
-            set->importFlashCards();
+        void removeFlashCards(string term, string definition) {
+            set->removeFlashCard(string term, string definition);
+        }
+
+        void editFlashcards(string term, string defintion, int index) {
+            set->changeFlashCard(string term, string defintion, int index);
         }
 
         void startQuiz(Flashcard* set) {
