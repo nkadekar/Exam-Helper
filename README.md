@@ -31,7 +31,7 @@
  
 ## Class Diagram
  <p align="center">
-    <img src="cs100 project omt.png">
+    <img src="cs100 project omt.jpg">
  </p>
 
  > * The quizzes aspect of our Exam Helper Project will be implemented by the strategy pattern so that we can use multiple algorithms and integrate either depending on user preference. In our case, we will be using the Exam class as the context. This is the Exam class that is also the primitive in the composite pattern. We will be creating the Quiz class as the strategy and implementing it as an abstract class with one main virtual method to run the algorithm for the quiz interface. As of now, two subclasses will inherit from the Quiz abstract class, the MultipleChoiceQuiz class and the FillWordQuiz class. These two classes, representing the concrete strategies, will have the distinct algorithms for the two quizzes the user can choose from, Multiple Choice and Fill in the Blank. The strategy pattern will give us the flexibility to possibly add another type of quiz in the future if we choose to do so.
