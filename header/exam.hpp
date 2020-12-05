@@ -10,9 +10,9 @@ using namespace std;
 
 class Exam : public Schedule {
     private:
+        string type;
         string name;
         string date;
-        int id;
         FlashCardList *set;
         Quiz *newQuiz;
 
@@ -22,6 +22,11 @@ class Exam : public Schedule {
             this->date = date;
             set = new FlashCardList();
             newQuiz = nullptr;
+            this->type = "Exam";
+        }
+
+        string getType() {
+            return this->type;
         }
 
         void renameExam(string newName) {
@@ -36,21 +41,19 @@ class Exam : public Schedule {
             set->displayFlashCards();
         }
 
-        void addFlashCards(int index) {
-            set->addFlashCard(index);
+        void addFlashCards(string term, string defintion) {
+            set->addFlashCard(term, definition);
         }
 
-        void removeFlashCards(int index) {
-            string term = set.at(index)->getTerm();
-            string defintion = set.at(index)->getDefinition();
-            set->removeFlashCard(term, definition, index);
+        void removeFlashCards(int choice) {
+            set->removeFlashCard(choice - 1);
         }
 
-        void editFlashcards(string term, string defintion, int index) {
-            set->changeFlashCard(term, defintion, index);
+        void editFlashcards(string term, string definition, int choice) {
+            set->changeFlashCard(term, definition, choice - 1);
         }
 
-        void startQuiz(Flashcard* set) {
+        void startQuiz() {
             newQuiz->runQuiz();
         }
 
@@ -68,10 +71,6 @@ class Exam : public Schedule {
 
         string getDate() {
             return this->date;
-        }
-
-        int getID() {
-            return this->id;
         }
 };
 
