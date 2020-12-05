@@ -20,86 +20,70 @@ using namespace std;
 //student enters name of course which then creates respective ID for the course
 //student has the option to add or remove a course
 
-class Folder : public Schedule {
-    protected:
-        vector<Schedule* > contents; //contents
+class Folder : public Schedule
+{
+private:
+    vector<Schedule *> contents; //contents
+    string type;
+public:
+    Folder(string name) : Schedule(name) {
+        this->type = "folder";
+    }
+
+    string getType()
+    {
+        return this->type;
+    }
     
-    public:
-        Folder(string name, int ID) : Schedule(name, ID) { }
+    string getName()
+    {
+        return this->name;
+    }
 
-        string getName() {
-            return this->name;
-        }
+    int getSize()
+    {
+        return contents.size();
+    }
 
-        int getID() {
-            return this->ID;
-        }
+    Schedule *at(int index)
+    {
+        return contents.at(index);
+    }
 
-        int getSize() {
-            return contents.size();
-        }
+    void addChildFolder(string newName)
+    {
+            contents.push_back(new Folder(newName);
+    }
 
-        Schedule *at(int index) {
-            index = ID - 1;
-            return contents.at(index);
-        }
+    void removeChildFolder(int index)
+    {
+        delete contents.at(index);
+        contents.erase(contents.begin() + index);
+    }
 
-        void addFolder(string newName) {
-            name = newName;
-            ID = contents.size() + 1;
+    void renameCurrentFolder(string newName)
+    {
+        this->name = newName;
+    }
 
-            contents.push_back(new Folder(name, ID));
-        }
+    void addChildExam(string name, string date)
+    {
+        contents.push_back(new Exam(name, date));
+    }
 
-        void removeFolder(int index) {
-            delete contents.at(index);
-            contents.erase(contents.begin() + index);
-        }
+    void removeChildExam(int choice)
+    {
+        delete contents.at(choice - 1);
+        contents.erase(set.begin() + choice);
+    }
 
-        void renameFolder(int ID, string edited) {
-            int index = find(ID);
-            contents.at(index)->setNewName(name);
+    void print()
+    {
+        for (int i = 0; i < contents.size(); ++i)
+        {
+            cout << i + 1 << " - " << contents.at(i)->getName() << endl;
         }
-        
-        int findID(int userID) {
-            int indexVal;
-            for(i = 0; i < getSize(); i++) {
-                if(userID - 1 == i) {
-                    indexVal = contents.at(i);
-                    break;
-                }
-            }
-            return indexVal;
-        }
-
-        void addExam(string name, string date) {
-            contents.push_back(new Exam(name, date));
-        }
-
-        void removeExam(int id) {
-            delete set.at(id);
-            set.erase(set.begin() + id);
-        }
-
-        void editExam(string name, string date, int id) {
-            int index = findID(id);
-            if (name != "") {
-                contents.at(index)->renameExam(name);
-            }
-            if (date != "") {
-                contents.at(index)->changeDate(date);
-            }
-        }
-
-        void setNewName(string newName) {
-            this->name = newName;
-        }
-
-        void print() {
-            for (int i = 0; i < v.size(); ++i) {
-                cout << v.at(i)->getID() << " - " << v.at(i)->getName() << endl;g
-            }
-        }
+    }
 };
 
 #endif /* folder_hpp */
