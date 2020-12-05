@@ -12,15 +12,14 @@
 
 using namespace std;
 
-class Schedule {
-    protected:
-        string name;
-        int ID;
-    
-    public:
-        Schedule(string name, int ID) : name(name), ID(ID) { }
-        virtual void print() = 0;
-    
+class Schedule
+{
+protected:
+    string name;
+    int ID;
+
+public:
+    Schedule(string name) : name(name) {}
 };
 
 #endif /* schedule_hpp */
