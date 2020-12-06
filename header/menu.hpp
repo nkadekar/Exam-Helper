@@ -1,10 +1,17 @@
-#ifndef MENU_HPP
-#define MENU_HPP
+#ifndef _MENU_HPP_
+#define _MENU_HPP_
 
 #include <iostream>
-#include "header/schedule.hpp"
+
 #include "header/exam.hpp"
+#include "header/schedule.hpp"
 #include "header/folder.hpp"
+
+#include "header/FlashCard.hpp"
+#include "header/FlashCardList.hpp"
+#include "header/MultipleChoiceQuiz.hpp"
+#include "header/Quiz.hpp"
+#include "header/TrueFalseQuiz.hpp"
 
 using namespace std;
 
@@ -15,132 +22,185 @@ class Menu {
         Quiz* currQuiz;
 
     public:
-        void mainMenu() {
+        void runExamHelper() {
+            while (curr->getType() == "Folder") {
+                folderMenu();
+            }
+
+            while (curr->getType() == "Exam") {
+                examMenu();
+            }
+        }
+
+        void printFolderMenu() {
+            cout << curr->getName();
+            cout << "-----------------------------" << endl
+                 << "a - Display Contents" << endl
+                 << "b - Explore Contents" << endl
+                 << "c - Add Folder" << endl
+                 << "d - Delete Folder" << endl
+                 << "e - Rename Folder" << endl
+                 << "f - Add Exam" << endl
+                 << "g - Delete Exam" << endl
+                 << "h - Exit Exam Helper" << endl << endl
+                 << "Choose an option: ";
+        }
+
+        void printExamMenu() {
+            curr->print();
+            cout << "-----------------------------" << endl
+                 << "a - Rename Exam" << endl
+                 << "b - Change Exam Date" << endl
+                 << "c - Practice Quizzes" << endl
+                 << "d - Display Flashcards" << endl
+                 << "e - Add a Flashcard" << endl
+                 << "f - Delete a Flashcard" << endl
+                 << "g - Edit a Flashcard" << endl
+                 << "h - Exit Exam Helper" << endl << endl
+                 << "Choose an option: ";
+        }
+
+        bool checkChoice(int choice) {
+            if (choice > curr->getSize() || choice < 1) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+        
+        void folderMenu() {
             char input = ' ';
-            printMainMenu();
+            printFolderMenu();
             cin >> input;
             cout << endl;
 
-            while (input != 'a' || input != 'b' || input != 'c' || input != 'd' || input != 'e' ||
-                   input != 'f' || input != 'g') {
+            while (input != 'a' || input != 'A' || input != 'b' || input != 'B' || input != 'c' || input != 'C' ||
+                   input != 'd' || input != 'D' || input != 'e' || input != 'E' || input != 'f' || input != 'F' ||
+                   input != 'g' || input != 'G' || input != 'h' || input != 'H') {
                 cout << "Invalid Input. Choose an option: ";
                 cin >> input;
                 cout << endl;
             }
-
-            if (input == 'a') {
+            
+            // a - Display Contents
+            if (input == 'a' || input == 'A') {
+                cout << "Contents in this folder: " << endl;
+                curr->print();
+            }
+            // b - Explore Contents
+            else if (input == 'b' || input == 'B') {
+                cout << "Enter Folder/Exam to Explore: " << endl;
+                curr->print();
+            }
+            // c - Add Folder
+            else if (input == 'c' || input == 'C') {
                 string folderName;
-                cout << "Enter the name of your folder: ";
+                cout << endl << "Enter the name of your folder: ";
                 getline(cin, folderName);
                 cout << endl;
-                addFolder(folderName);
+                curr->addChildFolder(folderName);
             }
-            else if (input == 'b') {
-                int numID;
-                cout << "Enter the ID number of the folder you want to remove: ";
-                cin >> numID;
+            // d - Remove Folder
+            else if (input == 'd' || input == 'D') {
+                int choice;
+                cout << endl << "Contents in this folder: " << endl;
+                curr->print();
+                cout << endl << "Enter the number of the folder you want to remove: ";
+                cin >> choice;
                 cout << endl;
-                removeFolder(numID);
+
+                // Check choice if valid
+                while (checkChoice(choice) == false) {
+                    cout << "Invalid Number." << endl
+                         << "Enter the number of the folder you want to remove: ";
+                    cin >> choice;
+                    cout << endl;
+                }
+
+                curr->removeChildFolder(choice);
             }
-            else if (input == 'c') {
-                int numID;
+            // e - Rename Folder
+            else if (input == 'e' || input == 'E') {
+                int choice;
                 string newName;
-
-                cout << "Enter the ID number of the folder you want to rename: ";
-                cin >> numID;
-                cout << endl;
-
-                cout << "Enter new folder name: ";
+                cout << endl << "Enter new folder name: ";
                 getline(cin, newName);
                 cout << endl;
-                renameFolder(numID, newName);
+                curr->renameCurrentFolder(newName);
             }
-            else if (input == 'd') {
+            // f - Add Exam
+            else if (input == 'f' || input == 'F') {
                 string name;
                 string date;
 
-                cout << "Enter exam name: ";
+                cout << endl << "Enter exam name: ";
                 getline(cin, name);
-                cout << endl;
-
-                cout << "Enter exam date: ";
+                cout << endl << "Enter exam date: ";
                 getline(cin, date);
                 cout << endl;
-                addExam(name, date);
+                curr->addExam(name, date);
             }
-            else if (input == 'e') {
-                int numID;
-                cout << "Enter the ID number of the exam you want to remove: ";
-                cin >> numID;
-                cout << endl;
-                removeExam(numID);
-            }
-            else if (input == 'f') {
-                string newName = "";
-                string newDate = "";
-                int numID;
-                char choice = ' ';
-
-                cout << "Enter the ID number of the exam you want to remove: ";
-                cin >> numID;
-                cout << endl;
-
-                cout << "What would you like to change?" << endl
-                     << "a - Rename Exam" << endl
-                     << "b - Change Exam Date" << endl
-                     << "c - Both" << endl;
+            // g - Delete Exam
+            else if (input == 'g' || input == 'G') {
+                int choice;
+                cout << "Enter the number of the exam you want to remove: ";
                 cin >> choice;
                 cout << endl;
-                
-                while (choice != 'a' || choice != 'b' || choice != 'c') {
-                    cout << "Invalid Input. Choose a valid option: ";
-                    cin >> input;
+
+                // Check choice if valid
+                while (checkChoice(choice) == false) {
+                    cout << "Invalid Number." << endl
+                         << "Enter the number of the exam you want to remove: ";
+                    cin >> choice;
                     cout << endl;
                 }
-                
-                if (choice == 'a') {
-                    cout << "Enter new Exam name: ";
-                    getline(cin, newName);
-                    cout << endl;
-                }
-                else if (choice == 'b') {
-                    cout << "Enter new Exam date: ";
-                    getline(cin, newDate);
-                    cout << endl;
-                }
-                else if (choice == 'c') {
-                    cout << "Enter new Exam name: ";
-                    getline(cin, newName);
-                    cout << endl;
-                    cout << "Enter new Exam date: ";
-                    getline(cin, newDate);
-                    cout << endl;
-                }
-                editExam(newName, newDate, numID);
+
+                curr->removeChildExam(choice);
             }
-            else if (input == 'g') {
+            // h - Exit exam helper
+            else if (input == 'h' || input == 'H') {
+                cout << endl << "Goodbye!" << endl;
                 exit(0);
             }
         }
 
-        void quizMenu() {
+        void examMenu() {
             char input = ' ';
-            printQuizMenu();
+            printExamMenu();
             cin >> input;
             cout << endl;
 
-            while (input != 'a' || input != 'b' || input != 'c' || input != 'd' ||
-                   input != 'e' || input != 'f') {
+            while (input != 'a' || input != 'A' || input != 'b' || input != 'B' || input != 'c' || input != 'C' ||
+                   input != 'd' || input != 'D' || input != 'e' || input != 'E' || input != 'f' || input != 'F' ||
+                   input != 'g' || input != 'G' || input != 'h' || input != 'H') {
                 cout << "Invalid Input. Choose an option: ";
                 cin >> input;
                 cout << endl;
             }
 
-            if (input == 'a') {
+            // a - Rename Exam
+            if (input = 'a' || input = 'A') {
+                string newName;
+                cout << endl << "Enter new Exam name: ";
+                getline(cin, newName);
+                cout << endl;
+                curr->renameExam(newName);
+            }
+            // b - Change Exam Date
+            else if (input = 'b' || input = 'B'){
+                string newDate;
+                cout << endl << "Enter new exam date: ";
+                getline(cin, newDate);
+                cout << endl;
+                curr->changeDate(newDate);
+            }
+            // c - Practice Quizzes 
+            else if (input == 'c' || input == 'C' ) {
                 int quizInput;
-                cout << "Which practice quiz would you like to take?" << endl
+                cout << endl << "Which practice quiz would you like to take?" << endl
                      << "1 - Multiple Choice" << endl
-                     << "2 - Fill in the Blank" << endl
+                     << "2 - True / False" << endl
                      << endl
                      << "Choose an option: ";
                 cin >> quizInput;
@@ -153,45 +213,47 @@ class Menu {
                 }
 
                 if (quizInput == 1) {
-                    setQuizMultipleChoice();
-                    startQuiz(FlashcardList* set);
+                    currQuiz->setQuizMultipleChoice();
+                    currQuiz->startQuiz();
                 }
                 else if (quizInput == 2) {
-                    setQuizFillIn();
-                    startQuiz(FlashcardList* set);
+                    currQuiz->setQuizTrueFalse();
+                    currQuiz->startQuiz();
                 }
             }
-            else if (input == 'b') {
-                displayFlashCards();
+            // d - Display Flashcards
+            else if (input == 'd' || input == 'D') {
+                curr->displayFlashCards();
             }
-            else if (input == 'c') {
+            // e - Add a Flashcard
+            else if (input == 'e' || input == 'E') {
                 string term;
                 string definition;
 
-                cout << "Enter term: ";
+                cout << endl << "Enter term: ";
                 getline(cin, term);
                 cout << endl;
 
                 cout << "Enter definition: ";
                 getline(cin, definition);
                 cout << endl;
-                addFlashCards(term, definition)
+                curr->addFlashCard(term, definition)
             }
-            else if (input == 'd') {
+            // f - Delete a Flashcard
+            else if (input == 'f' || input == 'F') {
                 int index;
-
-                cout << "Enter index of flashcard to be removed: ";
+                cout << endl << "Enter index of flashcard to be removed: ";
                 cin >> index;
                 cout << endl;
-
-                removeFlashCards(index);
+                curr->removeFlashCard(index);
             }
-            else if (input == 'e') {
+            // g - Edit a Flashcard
+            else if (input == 'g' || input 'G') {
                 int index;
                 string newTerm;
                 string newDefinition;
 
-                cout << "Enter the index of term you want to edit : ";
+                cout << endl << "Enter the index of term you want to edit : ";
                 cin >> index;
                 cout << endl;
 
@@ -202,39 +264,14 @@ class Menu {
                 cout << "Enter new definition: ";
                 getline(cin, newDefinition);
                 cout << endl;
-                editFlashCards(newTerm, newDefinition, index);
+                changeFlashCard(newTerm, newDefinition, index);
             }
-            else if (input == 'f') {
+            // h - Exit Exam Helper
+            else if (input == 'h' || input == 'H') {
+                cout << endl << "Goodbye!" << endl;
                 exit(0);
             }
         }
-
-        void printMainMenu() {
-            cout << "EXAM HELPER MENU" << endl
-                 << "-----------------------------" << endl;
-            print();
-            cout << "-----------------------------" << endl
-                 << "a - Add Folder" << endl
-                 << "b - Delete Folder" << endl
-                 << "c - Rename Folder" << endl
-                 << "d - Add Exam" << endl
-                 << "e - Delete Exam" << endl
-                 << "f - Edit Exam" << endl
-                 << "g - Exit Exam Helper" << endl << endl
-                 << "Choose an option: ";
-        }
-
-        void printQuizMenu() {
-//          print exam name
-            cout << "-----------------------------" << endl
-                 << "a - Practice Quizzes" << endl
-                 << "b - Display Flashcards" << endl
-                 << "c - Add Flashcards" << endl
-                 << "d - Delete Flashcards" << endl
-                 << "e - Edit Flashcards" << endl
-                 << "f - Exit Exam Helper" << endl << endl
-                 << "Choose an option: ";
-        }
 };
 
-#endif
+#endif // _MENU_HPP_
