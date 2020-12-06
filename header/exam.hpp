@@ -1,7 +1,7 @@
 #ifndef _EXAM_HPP
 #define _EXAM_HPP
 
-#include "header/Schedule.hpp"
+#include "header/schedule.hpp"
 #include "header/FlashCardList.hpp"
 #include <string>
 #include <vector>
