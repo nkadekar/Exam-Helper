@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 #include "../header/Quiz.hpp"
 #include "../header/MultipleChoiceQuiz.hpp"
+#include "../header/TrueFalseQuiz.hpp"
 
 TEST(MultipleChoiceQuizTest, EmptySet){
 	FlashCardList* set = new FlashCardList();
