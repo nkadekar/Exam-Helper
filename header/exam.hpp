@@ -62,7 +62,7 @@ class Exam : public Schedule {
         }
 
         void setQuizFillIn() {
-            newQuiz = new FillInQuiz(set);
+            newQuiz = new TrueFalseQuiz(set);
         }
 
         string getName() {
