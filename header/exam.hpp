@@ -29,6 +29,8 @@ class Exam : public Schedule {
             this->type = "Exam";
         }
 
+        virtual ~Exam(){}
+
         virtual string getType() {
             return this->type;
         }
@@ -58,7 +60,9 @@ class Exam : public Schedule {
         }
 
         virtual void startQuiz() {
-            newQuiz->runQuiz();
+            if (newQuiz != nullptr){
+                newQuiz->runQuiz();
+            }
         }
 
         virtual void setQuizMultipleChoice() {

@@ -27,11 +27,15 @@ private:
 
 public:
     Folder(string name) : Schedule(name) {
-        this->type = "folder";
+        this->type = "Folder";
         this->name = name;
     }
 
-   // Folder () {}
+    virtual ~Folder(){
+        for (int i = 0; i < contents.size(); i++){
+            delete contents.at(i);
+        }
+    }
 
     virtual string getType() {
         return this->type;

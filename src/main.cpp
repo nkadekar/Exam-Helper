@@ -12,8 +12,7 @@
 using namespace std;
 
 int main() {
-
-	Schedule* ExamHelper = new Folder("Home");
+	Schedule* ExamHelper = new Folder("Home Directory");
 	Menu* menu = new Menu(ExamHelper);
 	menu->runExamHelper();
 

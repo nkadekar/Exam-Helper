@@ -2,6 +2,7 @@
 #define _MENU_HPP_
 
 #include <iostream>
+#include <climits>
 
 #include "exam.hpp"
 #include "schedule.hpp"
@@ -26,7 +27,7 @@ class Menu {
         }
 
         void runExamHelper() {
-            while (curr->getType() == "folder") {
+            while (curr->getType() == "Folder") {
                 folderMenu();
             }
 
@@ -36,7 +37,7 @@ class Menu {
         }
 
         void printFolderMenu() {
-            cout << curr->getName();
+            cout << curr->getName() << endl;
             cout << "-----------------------------" << endl
                  << "a - Display Contents" << endl
                  << "b - Explore Contents" << endl
@@ -45,7 +46,7 @@ class Menu {
                  << "e - Rename Folder" << endl
                  << "f - Add Exam" << endl
                  << "g - Delete Exam" << endl
-                 << "h - Exit Exam Helper" << endl << endl
+                 << "q - Exit Exam Helper" << endl << endl
                  << "Choose an option: ";
         }
 
@@ -60,12 +61,12 @@ class Menu {
                  << "e - Add a Flashcard" << endl
                  << "f - Delete a Flashcard" << endl
                  << "g - Edit a Flashcard" << endl
-                 << "h - Exit Exam Helper" << endl << endl
+                 << "q - Exit Exam Helper" << endl << endl
                  << "Choose an option: ";
         }
 
         bool checkChoice(int choice) {
-            if (choice >= curr->getSize() || choice < 1) {
+            if (choice >= curr->getSize() && choice < 1) {
                 return false;
             }
             else {
@@ -74,7 +75,7 @@ class Menu {
         }
 
         bool checkFlashCardChoice(int choice) {
-            if (choice >= curr->FlashcardSetSize() || choice < 1) {
+            if (choice >= curr->FlashcardSetSize() && choice < 1) {
                 return false;
             }
             else {
@@ -83,14 +84,14 @@ class Menu {
         }
         
         void folderMenu() {
-            char input = ' ';
+            char input;
             printFolderMenu();
             cin >> input;
             cout << endl;
 
-            while (input != 'a' || input != 'A' || input != 'b' || input != 'B' || input != 'c' || input != 'C' ||
-                   input != 'd' || input != 'D' || input != 'e' || input != 'E' || input != 'f' || input != 'F' ||
-                   input != 'g' || input != 'G' || input != 'q' || input != 'Q') {
+            while (input != 'a' && input != 'A' && input != 'b' && input != 'B' && input != 'c' && input != 'C' &&
+                   input != 'd' && input != 'D' && input != 'e' && input != 'E' && input != 'f' && input != 'F' &&
+                   input != 'g' && input != 'G' && input != 'q' && input != 'Q') {
                 cout << "Invalid Input. Choose an option: ";
                 cin >> input;
                 cout << endl;
@@ -98,31 +99,44 @@ class Menu {
             
             // a - Display Contents
             if (input == 'a' || input == 'A') {
-                cout << "Contents in this folder: " << endl;
-                curr->print();
+                if (curr->getSize() == 0){
+                    cout << "This folder is empty." << endl;
+                }
+                else{
+                    cout << "Contents in this folder: " << endl;
+                    curr->print();
+                }
+                cout << endl;
             }
             // b - Explore Contents
             else if (input == 'b' || input == 'B') {
-                int choice;
-                curr->print();
-                cout << endl << "Enter Folder/Exam to Explore: ";
-                cin >> choice;
-                cout << endl;
-
-                // Check choice if valid
-                while (checkChoice(choice) == false) {
-                    cout << "Invalid Number." << endl
-                         << "Enter the number of the folder you want to explore: ";
+                if (curr->getSize() == 0){
+                    cout << "This folder is empty." << endl;
+                }
+                else{
+                    int choice;
+                    curr->print();
+                    cout << endl << "Enter Folder/Exam to Explore: ";
                     cin >> choice;
                     cout << endl;
-                }
 
-                curr = curr->at(choice - 1);
+                    // Check choice if valid
+                    while (checkChoice(choice) == false) {
+                        cout << "Invalid Number." << endl
+                            << "Enter the number of the folder you want to explore: ";
+                        cin >> choice;
+                        cout << endl;
+                    }
+
+                    curr = curr->at(choice - 1);
+                }
             }
             // c - Add Folder
             else if (input == 'c' || input == 'C') {
                 string folderName;
-                cout << endl << "Enter the name of your folder: ";
+                string junk;
+                cout << "Enter the name of your new folder: ";
+                getline(cin, junk); //to set up the buffer for getline
                 getline(cin, folderName);
                 cout << endl;
                 curr->addChildFolder(folderName);
@@ -150,6 +164,8 @@ class Menu {
             else if (input == 'e' || input == 'E') {
                 int choice;
                 string newName;
+                string junk;
+                getline(cin, junk); //to set up the buffer for getline
                 cout << endl << "Enter new folder name: ";
                 getline(cin, newName);
                 cout << endl;
@@ -159,6 +175,9 @@ class Menu {
             else if (input == 'f' || input == 'F') {
                 string name;
                 string date;
+                string junk;
+
+                getline(cin, junk); //To set up the buffer for getline
 
                 cout << endl << "Enter exam name: ";
                 getline(cin, name);
@@ -197,9 +216,9 @@ class Menu {
             cin >> input;
             cout << endl;
 
-            while (input != 'a' || input != 'A' || input != 'b' || input != 'B' || input != 'c' || input != 'C' ||
-                   input != 'd' || input != 'D' || input != 'e' || input != 'E' || input != 'f' || input != 'F' ||
-                   input != 'g' || input != 'G' || input != 'q' || input != 'Q') {
+            while (input != 'a' && input != 'A' && input != 'b' && input != 'B' && input != 'c' && input != 'C' &&
+                   input != 'd' && input != 'D' && input != 'e' && input != 'E' && input != 'f' && input != 'F' &&
+                   input != 'g' && input != 'G' && input != 'q' && input != 'Q') {
                 cout << "Invalid Input. Choose an option: ";
                 cin >> input;
                 cout << endl;
@@ -208,6 +227,8 @@ class Menu {
             // a - Rename Exam
             if (input == 'a' || input == 'A') {
                 string newName;
+                string junk;
+                getline(cin, junk); //to set up the buffer for newline
                 cout << endl << "Enter new Exam name: ";
                 getline(cin, newName);
                 cout << endl;
@@ -216,6 +237,8 @@ class Menu {
             // b - Change Exam Date
             else if (input == 'b' || input == 'B'){
                 string newDate;
+                string junk;
+                getline(cin, junk); //to set up the buffer for newline
                 cout << endl << "Enter new exam date: ";
                 getline(cin, newDate);
                 cout << endl;
@@ -232,7 +255,7 @@ class Menu {
                 cin >> quizInput;
                 cout << endl;
 
-                while (quizInput != 1 || quizInput != 2) {
+                while (quizInput != 1 && quizInput != 2) {
                     cout << "Invalid Input. Choose an option: ";
                     cin >> quizInput;
                     cout << endl << endl;
@@ -255,6 +278,9 @@ class Menu {
             else if (input == 'e' || input == 'E') {
                 string term;
                 string definition;
+                string junk;
+
+                getline(cin, junk); //to set up the buffer for newline
 
                 cout << endl << "Enter term: ";
                 getline(cin, term);
@@ -299,6 +325,9 @@ class Menu {
                     cin >> index;
                     cout << endl;
                 }
+
+                string junk;
+                getline(cin, junk); //to set up the buffer for newline
 
                 cout << "Enter new term name: ";
                 getline(cin, newTerm);
