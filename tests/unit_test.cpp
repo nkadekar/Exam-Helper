@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 #include "flashcard_unit_tests.hpp"
 #include "quiz_unit_tests.hpp"
+#include "folder_tests.hpp"
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
