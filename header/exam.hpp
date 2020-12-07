@@ -21,7 +21,7 @@ class Exam : public Schedule {
 
     public:
         Exam(string name, string date) : Schedule(name) {
-            this->name = name
+            this->name = name;
             this->date = date;
             set = new FlashCardList();
             newQuiz = nullptr;
