@@ -20,8 +20,7 @@ class Exam : public Schedule {
         Quiz *newQuiz;
 
     public:
-        Exam(string name, string date) {
-            this->name = name;
+        Exam(string name, string date) : Schedule(name) {
             this->date = date;
             set = new FlashCardList();
             newQuiz = nullptr;
