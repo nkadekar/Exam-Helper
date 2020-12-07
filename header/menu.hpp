@@ -3,15 +3,15 @@
 
 #include <iostream>
 
-#include "header/exam.hpp"
-#include "header/schedule.hpp"
-#include "header/folder.hpp"
+#include "exam.hpp"
+#include "schedule.hpp"
+#include "folder.hpp"
 
-#include "header/FlashCard.hpp"
-#include "header/FlashCardList.hpp"
-#include "header/MultipleChoiceQuiz.hpp"
-#include "header/Quiz.hpp"
-#include "header/TrueFalseQuiz.hpp"
+#include "FlashCard.hpp"
+#include "FlashCardList.hpp"
+#include "MultipleChoiceQuiz.hpp"
+#include "Quiz.hpp"
+#include "TrueFalseQuiz.hpp"
 
 using namespace std;
 
