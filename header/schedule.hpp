@@ -17,6 +17,7 @@ class Schedule
 protected:
     string name;
 
+
 public: 
     Schedule(string name) : name(name) {}
 
