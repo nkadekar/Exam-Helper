@@ -49,12 +49,12 @@ class Exam : public Schedule {
             set->addFlashCard(term, definition);
         }
 
-        void removeFlashCards(int choice) {
-            set->removeFlashCard(choice - 1);
+        void removeFlashCards(int index) {
+            set->removeFlashCard(index);
         }
 
-        void editFlashcards(string term, string definition, int choice) {
-            set->changeFlashCard(term, definition, choice - 1);
+        void editFlashcards(string term, string definition, int index) {
+            set->changeFlashCard(term, definition, index);
         }
 
         void startQuiz() {

@@ -75,10 +75,10 @@ public:
         contents.push_back(new Exam(name, date));
     }
 
-    void removeChildExam(int choice)
+    void removeChildExam(int index)
     {
-        delete contents.at(choice - 1);
-        contents.erase(contents.begin() + choice);
+        delete contents.at(index);
+        contents.erase(contents.begin() + index);
     }
 
     void print()
