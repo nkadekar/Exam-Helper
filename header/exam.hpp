@@ -6,6 +6,7 @@
 #include "Quiz.hpp"
 #include "MultipleChoiceQuiz.hpp"
 #include "TrueFalseQuiz.hpp"
+
 #include <string>
 #include <vector>
 
@@ -21,7 +22,7 @@ class Exam : public Schedule {
 
     public:
         Exam(string name, string date) : Schedule(name) {
-            //this->name = name;
+            this->name = name;
             this->date = date;
             set = new FlashCardList();
             newQuiz = nullptr;
@@ -40,8 +41,8 @@ class Exam : public Schedule {
             this->date = newDate;
         }
 
-        void displayFlashcards() {
-            set->displayFlashCards();
+        string displayFlashCards() {
+            return set->displayFlashCards();
         }
 
         void addFlashCards(string term, string definition) {
