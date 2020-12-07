@@ -1,9 +1,9 @@
 #ifndef _EXAM_HPP
 #define _EXAM_HPP
 
-#include "header/schedule.hpp"
-#include "header/FlashCardList.hpp"
-#include "header/Quiz.hpp"
+#include "schedule.hpp"
+#include "FlashCardList.hpp"
+#include "Quiz.hpp"
 #include "MultipleChoiceQuiz.hpp"
 #include "TrueFalseQuiz.hpp"
 #include <string>
