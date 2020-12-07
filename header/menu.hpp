@@ -6,7 +6,6 @@
 #include "exam.hpp"
 #include "schedule.hpp"
 #include "folder.hpp"
-
 #include "FlashCard.hpp"
 #include "FlashCardList.hpp"
 #include "MultipleChoiceQuiz.hpp"
@@ -21,8 +20,13 @@ class Menu {
         Quiz* currQuiz;
 
     public:
+        Menu(Schedule* ExamHelper) {
+            curr = ExamHelper;
+            currQuiz = nullptr;
+        }
+
         void runExamHelper() {
-            while (curr->getType() == "Folder") {
+            while (curr->getType() == "folder") {
                 folderMenu();
             }
 
@@ -61,7 +65,7 @@ class Menu {
         }
 
         bool checkChoice(int choice) {
-            if (choice > curr->getSize() || choice < 1) {
+            if (choice >= curr->getSize() || choice < 1) {
                 return false;
             }
             else {
@@ -70,7 +74,7 @@ class Menu {
         }
 
         bool checkFlashCardChoice(int choice) {
-            if (choice > curr->getSize() || choice < 1) {
+            if (choice >= curr->FlashcardSetSize() || choice < 1) {
                 return false;
             }
             else {
@@ -86,7 +90,7 @@ class Menu {
 
             while (input != 'a' || input != 'A' || input != 'b' || input != 'B' || input != 'c' || input != 'C' ||
                    input != 'd' || input != 'D' || input != 'e' || input != 'E' || input != 'f' || input != 'F' ||
-                   input != 'g' || input != 'G' || input != 'h' || input != 'H') {
+                   input != 'g' || input != 'G' || input != 'q' || input != 'Q') {
                 cout << "Invalid Input. Choose an option: ";
                 cin >> input;
                 cout << endl;
@@ -99,8 +103,21 @@ class Menu {
             }
             // b - Explore Contents
             else if (input == 'b' || input == 'B') {
-                cout << "Enter Folder/Exam to Explore: " << endl;
+                int choice;
                 curr->print();
+                cout << endl << "Enter Folder/Exam to Explore: ";
+                cin >> choice;
+                cout << endl;
+
+                // Check choice if valid
+                while (checkChoice(choice) == false) {
+                    cout << "Invalid Number." << endl
+                         << "Enter the number of the folder you want to explore: ";
+                    cin >> choice;
+                    cout << endl;
+                }
+
+                curr = curr->at(choice - 1);
             }
             // c - Add Folder
             else if (input == 'c' || input == 'C') {
@@ -127,7 +144,7 @@ class Menu {
                     cout << endl;
                 }
 
-                curr->removeChildFolder(choice);
+                curr->removeChildFolder(choice - 1);
             }
             // e - Rename Folder
             else if (input == 'e' || input == 'E') {
@@ -148,7 +165,7 @@ class Menu {
                 cout << endl << "Enter exam date: ";
                 getline(cin, date);
                 cout << endl;
-                curr->addExam(name, date);
+                curr->addChildExam(name, date);
             }
             // g - Delete Exam
             else if (input == 'g' || input == 'G') {
@@ -165,10 +182,10 @@ class Menu {
                     cout << endl;
                 }
 
-                curr->removeChildExam(choice);
+                curr->removeChildExam(choice - 1);
             }
-            // h - Exit exam helper
-            else if (input == 'h' || input == 'H') {
+            // q - Exit exam helper
+            else if (input == 'q' || input == 'Q') {
                 cout << endl << "Goodbye!" << endl;
                 exit(0);
             }
@@ -182,14 +199,14 @@ class Menu {
 
             while (input != 'a' || input != 'A' || input != 'b' || input != 'B' || input != 'c' || input != 'C' ||
                    input != 'd' || input != 'D' || input != 'e' || input != 'E' || input != 'f' || input != 'F' ||
-                   input != 'g' || input != 'G' || input != 'h' || input != 'H') {
+                   input != 'g' || input != 'G' || input != 'q' || input != 'Q') {
                 cout << "Invalid Input. Choose an option: ";
                 cin >> input;
                 cout << endl;
             }
 
             // a - Rename Exam
-            if (input = 'a' || input = 'A') {
+            if (input == 'a' || input == 'A') {
                 string newName;
                 cout << endl << "Enter new Exam name: ";
                 getline(cin, newName);
@@ -197,7 +214,7 @@ class Menu {
                 curr->renameExam(newName);
             }
             // b - Change Exam Date
-            else if (input = 'b' || input = 'B'){
+            else if (input == 'b' || input == 'B'){
                 string newDate;
                 cout << endl << "Enter new exam date: ";
                 getline(cin, newDate);
@@ -222,12 +239,12 @@ class Menu {
                 }
 
                 if (quizInput == 1) {
-                    currQuiz->setQuizMultipleChoice();
-                    currQuiz->startQuiz();
+                    curr->setQuizMultipleChoice();
+                    curr->startQuiz();
                 }
                 else if (quizInput == 2) {
-                    currQuiz->setQuizTrueFalse();
-                    currQuiz->startQuiz();
+                    curr->setQuizTrueFalse();
+                    curr->startQuiz();
                 }
             }
             // d - Display Flashcards
@@ -246,7 +263,7 @@ class Menu {
                 cout << "Enter definition: ";
                 getline(cin, definition);
                 cout << endl;
-                curr->addFlashCard(term, definition)
+                curr->addFlashCards(term, definition);
             }
             // f - Delete a Flashcard
             else if (input == 'f' || input == 'F') {
@@ -254,10 +271,19 @@ class Menu {
                 cout << endl << "Enter index of flashcard to be removed: ";
                 cin >> index;
                 cout << endl;
-                curr->removeFlashCard(index);
+
+                // Check choice if valid
+                while (checkFlashCardChoice(index) == false) {
+                    cout << "Invalid Number." << endl
+                         << "Enter the number of the Flashcard you want to remove: ";
+                    cin >> index;
+                    cout << endl;
+                }
+                
+                curr->removeFlashCards(index - 1);
             }
             // g - Edit a Flashcard
-            else if (input == 'g' || input 'G') {
+            else if (input == 'g' || input == 'G') {
                 int index;
                 string newTerm;
                 string newDefinition;
@@ -266,6 +292,14 @@ class Menu {
                 cin >> index;
                 cout << endl;
 
+                // Check choice if valid
+                while (checkFlashCardChoice(index) == false) {
+                    cout << "Invalid Number." << endl
+                         << "Enter the number of the Flashcard you want to edit: ";
+                    cin >> index;
+                    cout << endl;
+                }
+
                 cout << "Enter new term name: ";
                 getline(cin, newTerm);
                 cout << endl;
@@ -273,10 +307,10 @@ class Menu {
                 cout << "Enter new definition: ";
                 getline(cin, newDefinition);
                 cout << endl;
-                changeFlashCard(newTerm, newDefinition, index);
+                curr->editFlashCards(newTerm, newDefinition, index - 1);
             }
             // h - Exit Exam Helper
-            else if (input == 'h' || input == 'H') {
+            else if (input == 'q' || input == 'Q') {
                 cout << endl << "Goodbye!" << endl;
                 exit(0);
             }

@@ -29,52 +29,56 @@ class Exam : public Schedule {
             this->type = "Exam";
         }
 
-        string getType() {
+        virtual string getType() {
             return this->type;
         }
 
-        void renameExam(string newName) {
+        virtual void renameExam(string newName) {
             this->name = newName;
         }
 
-        void changeDate(string newDate) {
+        virtual void changeDate(string newDate) {
             this->date = newDate;
         }
 
-        string displayFlashCards() {
+        virtual string displayFlashCards() {
             return set->displayFlashCards();
         }
 
-        void addFlashCards(string term, string definition) {
+        virtual void addFlashCards(string term, string definition) {
             set->addFlashCard(term, definition);
         }
 
-        void removeFlashCards(int index) {
+        virtual void removeFlashCards(int index) {
             set->removeFlashCard(index);
         }
 
-        void editFlashcards(string term, string definition, int index) {
+        virtual void editFlashcards(string term, string definition, int index) {
             set->changeFlashCard(term, definition, index);
         }
 
-        void startQuiz() {
+        virtual void startQuiz() {
             newQuiz->runQuiz();
         }
 
-        void setQuizMultipleChoice() {
+        virtual void setQuizMultipleChoice() {
             newQuiz = new MultipleChoiceQuiz(set);
         }
 
-        void setQuizTrueFalse() {
+        virtual void setQuizTrueFalse() {
             newQuiz = new TrueFalseQuiz(set);
         }
 
-        string getName() {
+        virtual string getName() {
             return this->name;
         }
 
-        string getDate() {
+        virtual string getDate() {
             return this->date;
+        }
+
+        virtual int FlashcardSetSize(){
+            return set->size();
         }
 };
 
