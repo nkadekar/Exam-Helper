@@ -17,7 +17,6 @@ using namespace std;
 
 class Menu {
     private:
-        string fileName;
         Schedule* curr;
         Quiz* currQuiz;
 
@@ -47,7 +46,8 @@ class Menu {
         }
 
         void printExamMenu() {
-            curr->print();
+            curr->getName();
+            cout << endl << "Exam Date: " << curr->getDate() << endl;
             cout << "-----------------------------" << endl
                  << "a - Rename Exam" << endl
                  << "b - Change Exam Date" << endl
@@ -61,6 +61,15 @@ class Menu {
         }
 
         bool checkChoice(int choice) {
+            if (choice > curr->getSize() || choice < 1) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        }
+
+        bool checkFlashCardChoice(int choice) {
             if (choice > curr->getSize() || choice < 1) {
                 return false;
             }
