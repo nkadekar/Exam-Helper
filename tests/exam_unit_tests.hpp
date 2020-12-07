@@ -45,8 +45,8 @@ TEST(ExamTest, GetTypeTest) {
 // FlashCard Tests
 TEST(ExamFlashCardListTest, DisplayFlashCardsTest) {
     Exam *test = new Exam("Midterm2", "12/06/20");
-    test->addFlashCard("Term1", "Definition1");
-    test->addFlashCard("Term2", "Definition2");
+    test->addFlashCards("Term1", "Definition1");
+    test->addFlashCards("Term2", "Definition2");
 
     EXPECT_EQ(test->displayFlashCards(), "FLASHCARDS\n1. Term1 : Definition1\n2. Term2 : Definition2\n");
 }

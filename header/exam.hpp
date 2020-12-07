@@ -6,6 +6,7 @@
 #include "Quiz.hpp"
 #include "MultipleChoiceQuiz.hpp"
 #include "TrueFalseQuiz.hpp"
+
 #include <string>
 #include <vector>
 
@@ -41,7 +42,7 @@ class Exam : public Schedule {
         }
 
         string displayFlashCards() {
-            set->displayFlashCards();
+            return set->displayFlashCards();
         }
 
         void addFlashCards(string term, string definition) {
