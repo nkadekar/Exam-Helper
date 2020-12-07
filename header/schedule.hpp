@@ -16,10 +16,15 @@ class Schedule
 {
 protected:
     string name;
-    int ID;
 
 public:
     Schedule(string name) : name(name) {}
+  // Schedule() {};
+
+    string getName()
+    {
+        return this->name;
+    }
 };
 
 #endif /* schedule_hpp */

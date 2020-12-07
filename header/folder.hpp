@@ -25,16 +25,20 @@ class Folder : public Schedule
 private:
     vector<Schedule *> contents; //contents
     string type;
+
 public:
     Folder(string name) : Schedule(name) {
         this->type = "folder";
+        this->name = name;
     }
+
+    Folder () {}
 
     string getType()
     {
         return this->type;
     }
-    
+
     string getName()
     {
         return this->name;
@@ -52,7 +56,7 @@ public:
 
     void addChildFolder(string newName)
     {
-            contents.push_back(new Folder(newName);
+        contents.push_back(new Folder(newName));
     }
 
     void removeChildFolder(int index)
@@ -74,7 +78,7 @@ public:
     void removeChildExam(int choice)
     {
         delete contents.at(choice - 1);
-        contents.erase(set.begin() + choice);
+        contents.erase(contents.begin() + choice);
     }
 
     void print()
@@ -86,4 +90,4 @@ public:
     }
 };
 
-#endif /* folder_hpp */
+#endif // folder_hpp 
