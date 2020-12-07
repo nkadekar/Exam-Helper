@@ -32,7 +32,7 @@ public:
         this->name = name;
     }
 
-    Folder () {}
+   // Folder () {}
 
     string getType()
     {

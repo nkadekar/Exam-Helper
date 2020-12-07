@@ -32,7 +32,7 @@ TEST(FolderTest, removeFolder) {
 
 TEST(FolderTest, renameFolder) {
     Folder* test = new Folder("Winter quarter");
-    EXPECT_EQ(test->getName(), "");
+    EXPECT_EQ(test->getName(), "Winter quarter");
 
     test->renameCurrentFolder("CS111");
     EXPECT_EQ(test->getName(), "CS111");
