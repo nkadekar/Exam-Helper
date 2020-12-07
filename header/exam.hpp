@@ -3,6 +3,9 @@
 
 #include "header/schedule.hpp"
 #include "header/FlashCardList.hpp"
+#include "header/Quiz.hpp"
+#include "MultipleChoiceQuiz.hpp"
+#include "TrueFalseQuiz.hpp"
 #include <string>
 #include <vector>
 
@@ -41,7 +44,7 @@ class Exam : public Schedule {
             set->displayFlashCards();
         }
 
-        void addFlashCards(string term, string defintion) {
+        void addFlashCards(string term, string definition) {
             set->addFlashCard(term, definition);
         }
 
@@ -61,7 +64,7 @@ class Exam : public Schedule {
             newQuiz = new MultipleChoiceQuiz(set);
         }
 
-        void setQuizFillIn() {
+        void setQuizTrueFalse() {
             newQuiz = new TrueFalseQuiz(set);
         }
 
