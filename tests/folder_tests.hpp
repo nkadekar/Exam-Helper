@@ -39,19 +39,17 @@ TEST(FolderTest, renameFolder) {
 }
 
 TEST(FolderTest, addExam) {
-    Folder *test = new Folder();
+    Folder *test = new Folder("Winter Quarter");
     test->addChildExam("CS100", "December 6, 2020");
     test->addChildExam("CS061", "December 18, 2020");
 
     ASSERT_EQ(test->getSize(), 2);
     EXPECT_EQ(test->at(0)->getName(), "CS100");
-    EXPECT_EQ(test->at(0)->getDate(), "December 6, 2020");    
     EXPECT_EQ(test->at(1)->getName(), "CS061");
-    EXPECT_EQ(test->at(1)->getDate(), "December 18, 2020");
 }
 
 TEST(FolderTest, removeExam) {
-    Folder *test = new Folder();
+    Folder *test = new Folder("Winter Quarter");
     test->addChildExam("CS100", "December 6, 2020");
     test->addChildExam("CS061", "December 18, 2020");
     ASSERT_EQ(test->getSize(), 2);
@@ -59,7 +57,6 @@ TEST(FolderTest, removeExam) {
     test->removeChildExam(1);
     ASSERT_EQ(test->getSize(), 1);
     EXPECT_EQ(test->at(0)->getName(), "CS100");
-    EXPECT_EQ(test->at(0)->getDate(), "December 6, 2020");
 }
 
 #endif //FOLDER_TESTS_HPP
