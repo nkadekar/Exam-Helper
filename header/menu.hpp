@@ -42,11 +42,11 @@ class Menu {
                  << "a - Display Contents" << endl
                  << "b - Explore Contents" << endl
                  << "c - Add Folder" << endl
-                 << "d - Delete Folder" << endl
+                 << "d - Delete Folder/Exam" << endl
                  << "e - Rename Folder" << endl
                  << "f - Add Exam" << endl
-                 << "g - Delete Exam" << endl
-                 << "q - Exit Exam Helper" << endl << endl
+                 << "q - Exit Exam Helper" << endl
+                 << "-----------------------------" << endl << endl
                  << "Choose an option: ";
         }
 
@@ -61,7 +61,8 @@ class Menu {
                  << "e - Add a Flashcard" << endl
                  << "f - Delete a Flashcard" << endl
                  << "g - Edit a Flashcard" << endl
-                 << "q - Exit Exam Helper" << endl << endl
+                 << "q - Exit Exam Helper" << endl
+                 << "-----------------------------" << endl << endl
                  << "Choose an option: ";
         }
 
@@ -91,7 +92,7 @@ class Menu {
 
             while (input != 'a' && input != 'A' && input != 'b' && input != 'B' && input != 'c' && input != 'C' &&
                    input != 'd' && input != 'D' && input != 'e' && input != 'E' && input != 'f' && input != 'F' &&
-                   input != 'g' && input != 'G' && input != 'q' && input != 'Q') {
+                   input != 'q' && input != 'Q') {
                 cout << "Invalid Input. Choose an option: ";
                 cin >> input;
                 cout << endl;
@@ -103,7 +104,7 @@ class Menu {
                     cout << "This folder is empty." << endl;
                 }
                 else{
-                    cout << "Contents in this folder: " << endl;
+                    cout << "Contents in this folder: " << endl << endl;
                     curr->print();
                 }
                 cout << endl;
@@ -118,14 +119,12 @@ class Menu {
                     curr->print();
                     cout << endl << "Enter Folder/Exam to Explore: ";
                     cin >> choice;
-                    cout << endl;
 
                     // Check choice if valid
                     while (checkChoice(choice) == false) {
                         cout << "Invalid Number." << endl
-                            << "Enter the number of the folder you want to explore: ";
+                             << "Enter the number of the folder you want to explore: ";
                         cin >> choice;
-                        cout << endl;
                     }
 
                     curr = curr->at(choice - 1);
@@ -141,24 +140,29 @@ class Menu {
                 cout << endl;
                 curr->addChildFolder(folderName);
             }
-            // d - Remove Folder
+            // d - Remove Folder/Exam
             else if (input == 'd' || input == 'D') {
-                int choice;
-                cout << endl << "Contents in this folder: " << endl;
-                curr->print();
-                cout << endl << "Enter the number of the folder you want to remove: ";
-                cin >> choice;
-                cout << endl;
-
-                // Check choice if valid
-                while (checkChoice(choice) == false) {
-                    cout << "Invalid Number." << endl
-                         << "Enter the number of the folder you want to remove: ";
+                if (curr->getSize() == 0) {
+                    cout << "This folder is empty." << endl;
+                }
+                else {
+                    int choice;
+                    cout << "Contents in this folder: " << endl;
+                    curr->print();
+                    cout << endl << "Enter the number of the folder/exam you want to remove: ";
                     cin >> choice;
                     cout << endl;
-                }
 
-                curr->removeChildFolder(choice - 1);
+                    // Check choice if valid
+                    while (checkChoice(choice) == false) {
+                        cout << "Invalid Number." << endl
+                            << "Enter the number of the folder you want to remove: ";
+                        cin >> choice;
+                        cout << endl;
+                    }
+
+                    curr->removeChildFolder(choice - 1);
+                }
             }
             // e - Rename Folder
             else if (input == 'e' || input == 'E') {
@@ -166,7 +170,7 @@ class Menu {
                 string newName;
                 string junk;
                 getline(cin, junk); //to set up the buffer for getline
-                cout << endl << "Enter new folder name: ";
+                cout << "Enter new folder name: ";
                 getline(cin, newName);
                 cout << endl;
                 curr->renameCurrentFolder(newName);
@@ -179,33 +183,16 @@ class Menu {
 
                 getline(cin, junk); //To set up the buffer for getline
 
-                cout << endl << "Enter exam name: ";
+                cout << "Enter exam name: ";
                 getline(cin, name);
                 cout << endl << "Enter exam date: ";
                 getline(cin, date);
                 cout << endl;
                 curr->addChildExam(name, date);
             }
-            // g - Delete Exam
-            else if (input == 'g' || input == 'G') {
-                int choice;
-                cout << "Enter the number of the exam you want to remove: ";
-                cin >> choice;
-                cout << endl;
-
-                // Check choice if valid
-                while (checkChoice(choice) == false) {
-                    cout << "Invalid Number." << endl
-                         << "Enter the number of the exam you want to remove: ";
-                    cin >> choice;
-                    cout << endl;
-                }
-
-                curr->removeChildExam(choice - 1);
-            }
             // q - Exit exam helper
             else if (input == 'q' || input == 'Q') {
-                cout << endl << "Goodbye!" << endl;
+                cout << "Goodbye!" << endl;
                 exit(0);
             }
         }
@@ -229,9 +216,8 @@ class Menu {
                 string newName;
                 string junk;
                 getline(cin, junk); //to set up the buffer for newline
-                cout << endl << "Enter new Exam name: ";
+                cout << "Enter new Exam name: ";
                 getline(cin, newName);
-                cout << endl;
                 curr->renameExam(newName);
             }
             // b - Change Exam Date
@@ -239,15 +225,14 @@ class Menu {
                 string newDate;
                 string junk;
                 getline(cin, junk); //to set up the buffer for newline
-                cout << endl << "Enter new exam date: ";
+                cout << "Enter new exam date: ";
                 getline(cin, newDate);
-                cout << endl;
                 curr->changeDate(newDate);
             }
             // c - Practice Quizzes 
             else if (input == 'c' || input == 'C' ) {
                 int quizInput;
-                cout << endl << "Which practice quiz would you like to take?" << endl
+                cout << "Which practice quiz would you like to take?" << endl
                      << "1 - Multiple Choice" << endl
                      << "2 - True / False" << endl
                      << endl
@@ -261,6 +246,8 @@ class Menu {
                     cout << endl << endl;
                 }
 
+                cout << "QUIZ" << endl;
+
                 if (quizInput == 1) {
                     curr->setQuizMultipleChoice();
                     curr->startQuiz();
@@ -272,7 +259,7 @@ class Menu {
             }
             // d - Display Flashcards
             else if (input == 'd' || input == 'D') {
-                curr->displayFlashCards();
+                cout << curr->displayFlashCards();
             }
             // e - Add a Flashcard
             else if (input == 'e' || input == 'E') {
@@ -282,31 +269,35 @@ class Menu {
 
                 getline(cin, junk); //to set up the buffer for newline
 
-                cout << endl << "Enter term: ";
+                cout << "Enter term: ";
                 getline(cin, term);
                 cout << endl;
 
                 cout << "Enter definition: ";
                 getline(cin, definition);
-                cout << endl;
                 curr->addFlashCards(term, definition);
             }
             // f - Delete a Flashcard
             else if (input == 'f' || input == 'F') {
                 int index;
-                cout << endl << "Enter index of flashcard to be removed: ";
-                cin >> index;
-                cout << endl;
-
-                // Check choice if valid
-                while (checkFlashCardChoice(index) == false) {
-                    cout << "Invalid Number." << endl
-                         << "Enter the number of the Flashcard you want to remove: ";
-                    cin >> index;
-                    cout << endl;
+                if (curr->FlashcardSetSize() == 0) {
+                        cout << "This set is empty." << endl;
                 }
-                
-                curr->removeFlashCards(index - 1);
+                else {
+                    cout << curr->displayFlashCards();
+                    cout << "Enter index of flashcard to be removed: ";
+                    cin >> index;
+
+                    // Check choice if valid
+                    while (checkFlashCardChoice(index) == false) {
+                        cout << "Invalid Number." << endl
+                            << "Enter the number of the Flashcard you want to remove: ";
+                        cin >> index;
+                        cout << endl;
+                    }
+                    
+                    curr->removeFlashCards(index - 1);
+                }
             }
             // g - Edit a Flashcard
             else if (input == 'g' || input == 'G') {
@@ -314,33 +305,38 @@ class Menu {
                 string newTerm;
                 string newDefinition;
 
-                cout << endl << "Enter the index of term you want to edit : ";
-                cin >> index;
-                cout << endl;
-
-                // Check choice if valid
-                while (checkFlashCardChoice(index) == false) {
-                    cout << "Invalid Number." << endl
-                         << "Enter the number of the Flashcard you want to edit: ";
+                if (curr->FlashcardSetSize() == 0) {
+                    cout << "This set is empty." << endl;
+                }
+                else {
+                    cout << curr->displayFlashCards();
+                    cout << "Enter the index of term you want to edit : ";
                     cin >> index;
                     cout << endl;
+
+                    // Check choice if valid
+                    while (checkFlashCardChoice(index) == false) {
+                        cout << "Invalid Number." << endl
+                             << "Enter the number of the Flashcard you want to edit: ";
+                        cin >> index;
+                        cout << endl;
+                    }
+
+                    string junk;
+                    getline(cin, junk); //to set up the buffer for newline
+
+                    cout << "Enter new term name: ";
+                    getline(cin, newTerm);
+                    cout << endl;
+
+                    cout << "Enter new definition: ";
+                    getline(cin, newDefinition);
+                    curr->editFlashCards(newTerm, newDefinition, index - 1);
                 }
-
-                string junk;
-                getline(cin, junk); //to set up the buffer for newline
-
-                cout << "Enter new term name: ";
-                getline(cin, newTerm);
-                cout << endl;
-
-                cout << "Enter new definition: ";
-                getline(cin, newDefinition);
-                cout << endl;
-                curr->editFlashCards(newTerm, newDefinition, index - 1);
             }
             // h - Exit Exam Helper
             else if (input == 'q' || input == 'Q') {
-                cout << endl << "Goodbye!" << endl;
+                cout << "Goodbye!" << endl;
                 exit(0);
             }
         }

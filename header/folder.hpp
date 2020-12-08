@@ -58,7 +58,7 @@ public:
     }
 
     virtual void removeChildFolder(int index) {
-        //delete contents.at(index);
+        delete contents.at(index);
         contents.erase(contents.begin() + index);
     }
 
@@ -71,14 +71,13 @@ public:
     }
 
     virtual void removeChildExam(int index) {
-        //delete contents.at(index);
+        delete contents.at(index);
         contents.erase(contents.begin() + index);
     }
 
     virtual void print() {
-        for (int i = 0; i < contents.size(); ++i)
-        {
-            cout << i + 1 << " - " << contents.at(i)->getName() << endl;
+        for (int i = 0; i < contents.size(); ++i) {
+            cout << i + 1 << " - " << contents.at(i)->getType() << ": " << contents.at(i)->getName() << endl;
         }
     }
 };
