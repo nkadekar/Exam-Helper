@@ -1,18 +1,17 @@
 #include "gtest/gtest.h"
 #include "../header/menu.hpp"
 
-TEST(MenuTest, InvalidFolderInput) {
+TEST(MenuTest, InvalidFolderZeroInput) {
     Schedule *ExamHelper = new Folder("Home Directory");
     Menu *menu = new Menu(ExamHelper);
-    menu->runExamHelper();
 
     ASSERT_FALSE(menu->checkChoice(0));
 }
 
-TEST(MenuTest, InvalidFolderInput) {
+TEST(MenuTest, InvalidFlashCardZeroInput) {
     Schedule *ExamHelper = new Folder("Home Directory");
     Menu *menu = new Menu(ExamHelper);
-    menu->runExamHelper();
 
     ASSERT_FALSE(menu->checkFlashCardChoice(0));
 }
+
