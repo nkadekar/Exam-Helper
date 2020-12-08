@@ -66,7 +66,7 @@ class Menu {
         }
 
         bool checkChoice(int choice) {
-            if (choice >= curr->getSize() || choice < 1) {
+            if (choice > curr->getSize() || choice < 1) {
                 return false;
             }
             else {
@@ -75,7 +75,7 @@ class Menu {
         }
 
         bool checkFlashCardChoice(int choice) {
-            if (choice >= curr->FlashcardSetSize() || choice < 1) {
+            if (choice > curr->FlashcardSetSize() || choice < 1) {
                 return false;
             }
             else {
