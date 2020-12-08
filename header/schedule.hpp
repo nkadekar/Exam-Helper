@@ -37,7 +37,7 @@ public:
     
     virtual void removeFlashCards(int){}
 
-    virtual void editFlashCards(string, string, int){}
+    virtual void editFlashcards(string, string, int){}
 
     virtual void startQuiz(){}
     

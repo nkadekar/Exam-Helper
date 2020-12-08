@@ -331,7 +331,7 @@ class Menu {
 
                     cout << "Enter new definition: ";
                     getline(cin, newDefinition);
-                    curr->editFlashCards(newTerm, newDefinition, index - 1);
+                    curr->editFlashcards(newTerm, newDefinition, index - 1);
                 }
             }
             // h - Exit Exam Helper
