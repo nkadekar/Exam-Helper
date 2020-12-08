@@ -51,8 +51,8 @@ class Menu {
         }
 
         void printExamMenu() {
-            curr->getName();
-            cout << endl << "Exam Date: " << curr->getDate() << endl;
+            cout << endl << curr->getName() << " - "
+                 << "Exam Date: " << curr->getDate() << endl;
             cout << "-----------------------------" << endl
                  << "a - Rename Exam" << endl
                  << "b - Change Exam Date" << endl
