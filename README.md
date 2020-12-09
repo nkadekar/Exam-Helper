@@ -57,5 +57,5 @@
  ## Installation/Usage
  > Instructions on installing and running your application
  ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
- 
+ > * How was your project tested/validated?
+ >   * We tested our project using Google's Unit Test Framework (gtest) for C++. We created separate unit tests for each class and tested expected and invalid user inputs. We then organized all these files into a single folder called tests.
