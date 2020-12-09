@@ -55,7 +55,10 @@
  ## Screenshots
  > Screenshots of the input/output after running your application
  ## Installation/Usage
- > Instructions on installing and running your application
+ > * Instructions on installing and running your application
+ >   * To use our program, you would need to clone our project’s repository and run it in your terminal.
+ >   - Compile the application using the command "g++ src/main.cpp"
+ >   - Run the application using the command "./a.out" or "a.exe"
  ## Testing
  > * How was your project tested/validated?
  >   * We tested our project using Google's Unit Test Framework (gtest) for C++. We created separate unit tests for each class and tested expected and invalid user inputs. We then organized all these files into a single folder called tests.
