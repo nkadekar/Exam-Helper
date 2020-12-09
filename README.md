@@ -43,10 +43,15 @@
  > Screenshots of the input/output after running your application
  
   ![test image](/add:explore:renameexam.png)
-  ![test image2](/add:delete:displayflashcards.png)
+  > * Adding exam folder, exploring contents in folder, renaming exam folder\
+  ![test image2](/add:delete:displayflashcard.png)
+  > * Adding flashcard, deleting flashcard, displaying flashcard set\
   ![test image3](/edit:displayflashcard.png)
+  > * Editing flashcard, displaying flashcard set after edit\
   ![test image4](/multiplechoicequiz.png)
+  > * Multiple choice quiz test example\
   ![test image5](/truefalsequiz.png)
+  > * True or false quiz example
  
  ## Installation/Usage
  > * Instructions on installing and running your application
