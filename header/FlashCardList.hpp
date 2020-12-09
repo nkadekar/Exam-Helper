@@ -14,6 +14,12 @@ class FlashCardList {
 	public:
 		FlashCardList(){};
 
+		~FlashCardList(){
+			for (int i = 0; i < set.size(); i++){
+				delete set.at(i);
+			}
+		}
+
 		int size(){
 			return set.size();
 		}
