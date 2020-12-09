@@ -41,6 +41,13 @@
  ## Final deliverable
  ## Screenshots
  > Screenshots of the input/output after running your application
+ 
+  ![test image](/add:explore:renameexam.png)
+  ![test image2](/add:delete:displayflashcards.png)
+  ![test image3](/edit:displayflashcard.png)
+  ![test image4](/multiplechoicequiz.png)
+  ![test image5](/truefalsequiz.png)
+ 
  ## Installation/Usage
  > * Instructions on installing and running your application
  >   * To use our program, you would need to clone our project’s repository and run it in your terminal.
