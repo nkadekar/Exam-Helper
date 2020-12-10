@@ -40,18 +40,30 @@
 
  ## Final deliverable
  ## Screenshots
- > Screenshots of the input/output after running your application
- 
-  ![test image](/add:explore:renameexam.png)
+  > ## Folder Menu
+  > * Display, Explore, and Delete input on an empty folder\
+  ![test image6](/folderInvalid.png)
+  > * Add new folder and displaying contents list after\
+  ![test image7](/addFolder.png)
+  > * Delete folder and displaying contents list after\
+  ![test image8](/deleteFolder.png)
+  > * Add new exam and test date and displaying contents list after\
+  ![test image9](/addExam.png)
+  > * Rename current folder\
+  ![test image10](/renameFolder.png)
+  > * Explore another folder's contents\
+  ![test image11](/exploreContents.png)
+  > ## Exam Menu 
   > * Adding exam folder, exploring contents in folder, renaming exam folder\
-  ![test image2](/add:delete:displayflashcard.png)
+  ![test image](/add:explore:renameexam.png)
   > * Adding flashcard, deleting flashcard, displaying flashcard set\
-  ![test image3](/edit:displayflashcard.png)
+  ![test image2](/add:delete:displayflashcard.png)
   > * Editing flashcard, displaying flashcard set after edit\
-  ![test image4](/multiplechoicequiz.png)
+  ![test image3](/edit:displayflashcard.png)
   > * Multiple choice quiz test example\
+  ![test image4](/multiplechoicequiz.png)
+  > * True or false quiz example\
   ![test image5](/truefalsequiz.png)
-  > * True or false quiz example
  
  ## Installation/Usage
  > * Instructions on installing and running your application
