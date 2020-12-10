@@ -40,6 +40,7 @@
 
  ## Final deliverable
  ## Screenshots
+ 
   > ## Folder Menu
   > * Display, Explore, and Delete input on an empty folder\
   ![test image6](/folderInvalid.png)
@@ -53,6 +54,7 @@
   ![test image10](/renameFolder.png)
   > * Explore another folder's contents\
   ![test image11](/exploreContents.png)
+  
   > ## Exam Menu 
   > * Adding exam folder, exploring contents in folder, renaming exam folder\
   ![test image](/add:explore:renameexam.png)
