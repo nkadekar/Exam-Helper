@@ -115,7 +115,7 @@ class TrueFalseQuiz: public Quiz {
         void resetFlashcards(){
             for (int i = 0; i < set->size(); i++){
                 if (set->at(i)->getUsed() == true){
-                    set->at(i)->setUsedToTrue();
+                    set->at(i)->setUsedToFalse();
                 }
             }
         }
